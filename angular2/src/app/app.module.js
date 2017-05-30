@@ -8,6 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var app_component_1 = require("./app.component");
+var wid_header_component_1 = require("./widgets/wid-header/wid_header.component");
+var wid_header_left_component_1 = require("./widgets/wid-header-left/wid_header_left.component");
+var wid_header_right_component_1 = require("./widgets/wid-header-right/wid_header_right.component");
+var wid_branding_component_1 = require("./widgets/wid-branding/wid_branding.component");
+var wid_branding_logo_component_1 = require("./widgets/wid-branding-logo/wid_branding_logo.component");
+var wid_branding_cart_component_1 = require("./widgets/wid-branding-cart/wid_branding_cart.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -16,7 +22,8 @@ var AppModule = (function () {
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule],
-        declarations: [app_component_1.AppComponent],
+        declarations: [app_component_1.AppComponent, wid_header_component_1.WidHeaderComponent, wid_header_left_component_1.WidHeaderLeftComponent, wid_header_right_component_1.WidHeaderRightComponent,
+            wid_branding_component_1.WidBrandingComponent, wid_branding_logo_component_1.WidBradingLogoComponent, wid_branding_cart_component_1.WidBrandingCartComponent],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

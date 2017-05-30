@@ -2,10 +2,16 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent }  from './app.component';
-
+import {WidHeaderComponent} from './widgets/wid-header/wid_header.component';
+import {WidHeaderLeftComponent} from './widgets/wid-header-left/wid_header_left.component';
+import {WidHeaderRightComponent} from './widgets/wid-header-right/wid_header_right.component'
+import {WidBrandingComponent} from './widgets/wid-branding/wid_branding.component';
+import {WidBradingLogoComponent} from './widgets/wid-branding-logo/wid_branding_logo.component';
+import {WidBrandingCartComponent} from './widgets/wid-branding-cart/wid_branding_cart.component';
 @NgModule({
   imports:      [ BrowserModule ],
-  declarations: [ AppComponent ],
+  declarations: [ AppComponent,WidHeaderComponent,WidHeaderLeftComponent,WidHeaderRightComponent,
+                  WidBrandingComponent,WidBradingLogoComponent,WidBrandingCartComponent ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

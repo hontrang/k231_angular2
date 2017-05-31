@@ -16,6 +16,18 @@ var wid_branding_logo_component_1 = require("./widgets/wid-branding-logo/wid_bra
 var wid_branding_cart_component_1 = require("./widgets/wid-branding-cart/wid_branding_cart.component");
 var wid_mainmenu_component_1 = require("./widgets/wid-mainmenu/wid_mainmenu.component");
 var mod_mainmenu_component_1 = require("./modules/mod-mainmenu/mod_mainmenu.component");
+var wid_promo_component_1 = require("./widgets/wid-promo/wid_promo.component");
+var wid_promo_1_component_1 = require("./widgets/wid-promo-1/wid_promo_1.component");
+var wid_promo_2_component_1 = require("./widgets/wid-promo-2/wid_promo_2.component");
+var wid_promo_3_component_1 = require("./widgets/wid-promo-3/wid_promo_3.component");
+var wid_promo_4_component_1 = require("./widgets/wid-promo-4/wid_promo_4.component");
+var wid_brands_component_1 = require("./widgets/wid-brands/wid_brands.component");
+var wid_brands_content_component_1 = require("./widgets/wid-brands-content/wid_brands_content.component");
+var wid_product_component_1 = require("./widgets/wid-product/wid_product.component");
+var mod_product_content_component_1 = require("./modules/mod-product-content/mod_product_content.component");
+var wid_product_1_component_1 = require("./widgets/wid-product-1/wid_product_1.component");
+var wid_product_2_component_1 = require("./widgets/wid-product-2/wid_product_2.component");
+var wid_product_3_component_1 = require("./widgets/wid-product-3/wid_product_3.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -26,7 +38,10 @@ AppModule = __decorate([
         imports: [platform_browser_1.BrowserModule],
         declarations: [app_component_1.AppComponent, wid_header_component_1.WidHeaderComponent, wid_header_left_component_1.WidHeaderLeftComponent, wid_header_right_component_1.WidHeaderRightComponent,
             wid_branding_component_1.WidBrandingComponent, wid_branding_logo_component_1.WidBradingLogoComponent, wid_branding_cart_component_1.WidBrandingCartComponent,
-            wid_mainmenu_component_1.WidMainMenuComponent, mod_mainmenu_component_1.ModMainMenuComponent],
+            wid_mainmenu_component_1.WidMainMenuComponent, mod_mainmenu_component_1.ModMainMenuComponent, wid_promo_component_1.WidPromoComponent,
+            wid_promo_1_component_1.WidPromo1Component, wid_promo_2_component_1.WidPromo2Component, wid_promo_3_component_1.WidPromo3Component, wid_promo_4_component_1.WidPromo4Component,
+            wid_brands_component_1.WidBrandsComponent, wid_brands_content_component_1.WidBrandsContentComponent, wid_product_component_1.WidProductComponent, mod_product_content_component_1.ModProductContentComponent,
+            wid_product_1_component_1.WidProduct1Component, wid_product_2_component_1.WidProduct2Component, wid_product_3_component_1.WidProduct3Component],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

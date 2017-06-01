@@ -36,6 +36,8 @@ var mod_footer_top_4_component_1 = require("./modules/mod-footer-top-4/mod_foote
 var wid_footer_bottom_component_1 = require("./widgets/wid-footer-bottom/wid_footer_bottom.component");
 var wid_footer_bottom_1_component_1 = require("./widgets/wid-footer-bottom-1/wid_footer_bottom_1.component");
 var wid_footer_bottom_2_component_1 = require("./widgets/wid-footer-bottom-2/wid_footer_bottom_2.component");
+var mod_slider_component_1 = require("./modules/mod-slider/mod-slider.component");
+var mod_main_content_component_1 = require("./modules/mod-main-content/mod-main-content.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -51,7 +53,8 @@ AppModule = __decorate([
             wid_brands_component_1.WidBrandsComponent, wid_brands_content_component_1.WidBrandsContentComponent, wid_product_component_1.WidProductComponent, mod_product_content_component_1.ModProductContentComponent,
             wid_product_1_component_1.WidProduct1Component, wid_product_2_component_1.WidProduct2Component, wid_product_3_component_1.WidProduct3Component,
             wid_footer_top_component_1.WidFooterTopComponent, mod_footer_top_1_component_1.ModFooterTop1Component, mod_footer_top_2_component_1.ModFooterTop2Component, mod_footer_top_3_component_1.ModFooterTop3Component, mod_footer_top_4_component_1.ModFooterTop4Component,
-            wid_footer_bottom_component_1.WidFooterBottomComponent, wid_footer_bottom_1_component_1.WidFooterBottom1Component, wid_footer_bottom_2_component_1.WidFooterBottom2Component],
+            wid_footer_bottom_component_1.WidFooterBottomComponent, wid_footer_bottom_1_component_1.WidFooterBottom1Component, wid_footer_bottom_2_component_1.WidFooterBottom2Component,
+            mod_slider_component_1.ModSliderComponent, mod_main_content_component_1.ModMainContentComponent],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

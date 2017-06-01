@@ -30,6 +30,8 @@ import {ModFooterTop4Component} from './modules/mod-footer-top-4/mod_footer_top_
 import {WidFooterBottomComponent} from './widgets/wid-footer-bottom/wid_footer_bottom.component';
 import {WidFooterBottom1Component} from './widgets/wid-footer-bottom-1/wid_footer_bottom_1.component';
 import {WidFooterBottom2Component} from './widgets/wid-footer-bottom-2/wid_footer_bottom_2.component';
+import {ModSliderComponent }  from './modules/mod-slider/mod-slider.component';
+import {ModMainContentComponent} from './modules/mod-main-content/mod-main-content.component'
 
 @NgModule({
   imports:      [ BrowserModule ],
@@ -40,7 +42,8 @@ import {WidFooterBottom2Component} from './widgets/wid-footer-bottom-2/wid_foote
                   WidBrandsComponent,WidBrandsContentComponent,WidProductComponent,ModProductContentComponent,
                   WidProduct1Component,WidProduct2Component,WidProduct3Component,
                   WidFooterTopComponent, ModFooterTop1Component,ModFooterTop2Component,ModFooterTop3Component,ModFooterTop4Component,
-                  WidFooterBottomComponent,WidFooterBottom1Component,WidFooterBottom2Component ],
+                  WidFooterBottomComponent,WidFooterBottom1Component,WidFooterBottom2Component,
+                  ModSliderComponent,ModMainContentComponent ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

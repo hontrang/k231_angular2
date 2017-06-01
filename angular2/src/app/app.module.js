@@ -28,6 +28,14 @@ var mod_product_content_component_1 = require("./modules/mod-product-content/mod
 var wid_product_1_component_1 = require("./widgets/wid-product-1/wid_product_1.component");
 var wid_product_2_component_1 = require("./widgets/wid-product-2/wid_product_2.component");
 var wid_product_3_component_1 = require("./widgets/wid-product-3/wid_product_3.component");
+var wid_footer_top_component_1 = require("./widgets/wid-footer-top/wid_footer_top.component");
+var mod_footer_top_1_component_1 = require("./modules/mod-footer-top-1/mod_footer_top_1.component");
+var mod_footer_top_2_component_1 = require("./modules/mod-footer-top-2/mod_footer_top_2.component");
+var mod_footer_top_3_component_1 = require("./modules/mod-footer-top-3/mod_footer_top_3.component");
+var mod_footer_top_4_component_1 = require("./modules/mod-footer-top-4/mod_footer_top_4.component");
+var wid_footer_bottom_component_1 = require("./widgets/wid-footer-bottom/wid_footer_bottom.component");
+var wid_footer_bottom_1_component_1 = require("./widgets/wid-footer-bottom-1/wid_footer_bottom_1.component");
+var wid_footer_bottom_2_component_1 = require("./widgets/wid-footer-bottom-2/wid_footer_bottom_2.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -41,7 +49,9 @@ AppModule = __decorate([
             wid_mainmenu_component_1.WidMainMenuComponent, mod_mainmenu_component_1.ModMainMenuComponent, wid_promo_component_1.WidPromoComponent,
             wid_promo_1_component_1.WidPromo1Component, wid_promo_2_component_1.WidPromo2Component, wid_promo_3_component_1.WidPromo3Component, wid_promo_4_component_1.WidPromo4Component,
             wid_brands_component_1.WidBrandsComponent, wid_brands_content_component_1.WidBrandsContentComponent, wid_product_component_1.WidProductComponent, mod_product_content_component_1.ModProductContentComponent,
-            wid_product_1_component_1.WidProduct1Component, wid_product_2_component_1.WidProduct2Component, wid_product_3_component_1.WidProduct3Component],
+            wid_product_1_component_1.WidProduct1Component, wid_product_2_component_1.WidProduct2Component, wid_product_3_component_1.WidProduct3Component,
+            wid_footer_top_component_1.WidFooterTopComponent, mod_footer_top_1_component_1.ModFooterTop1Component, mod_footer_top_2_component_1.ModFooterTop2Component, mod_footer_top_3_component_1.ModFooterTop3Component, mod_footer_top_4_component_1.ModFooterTop4Component,
+            wid_footer_bottom_component_1.WidFooterBottomComponent, wid_footer_bottom_1_component_1.WidFooterBottom1Component, wid_footer_bottom_2_component_1.WidFooterBottom2Component],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

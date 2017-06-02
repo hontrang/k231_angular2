@@ -19,20 +19,20 @@ export class ModSliderComponent implements OnInit {
                 nextText: '<i class="fa fa-angle-right"></i>',
                 prevText: '<i class="fa fa-angle-left"></i>',
                 auto: true,
-                onSliderLoad: function (currentIndex) {
-                    $('#bxslider-home4 li').find('.caption').each(function (i, index) {
+                onSliderLoad: function (currentIndex: any) {
+                    $('#bxslider-home4 li').find('.caption').each(function (i: any, index: any) {
                         $(this).show().addClass('animated fadeInRight').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
                             $(this).removeClass('fadeInRight animated');
                         });
                     })
                 },
-                onSlideBefore: function (slideElement, oldIndex, newIndex) {
+                onSlideBefore: function (slideElement: any, oldIndex: any, newIndex: any) {
                     //slideElement.find('.sl-description').hide();
                     slideElement.find('.caption').each(function () {
                         $(this).hide().removeClass('animated fadeInRight');
                     });
                 },
-                onSlideAfter: function (slideElement, oldIndex, newIndex) {
+                onSlideAfter: function (slideElement: any, oldIndex: any, newIndex: any) {
                     //slideElement.find('.sl-description').show();
                     setTimeout(function () {
                         slideElement.find('.caption').each(function () {

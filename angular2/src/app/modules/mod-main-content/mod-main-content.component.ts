@@ -85,7 +85,7 @@ export class ModMainContentComponent implements OnInit {
         });
 
         // jQuery Scroll effect
-        $('.navbar-nav li a, .scroll-to-up').bind('click', function (event) {
+        $('.navbar-nav li a, .scroll-to-up').bind('click', function (event: any) {
             var $anchor = $(this);
             var headerH = $('.header-area').outerHeight();
             $('html, body').stop().animate({

@@ -1,0 +1,19 @@
+
+<header-template> </header-template>
+<!-- End header area -->
+
+<site-branding-template> </site-branding-template> 
+<!-- End site branding area -->
+
+<mainmenu-template> </mainmenu-template>   
+<!-- End mainmenu area -->
+
+<home-content *ngIf="locationPath != '/shop'" > </home-content>
+<single-product-content *ngIf="locationPath == '/shop'" > </single-product-content>
+<!-- End Main Content-->
+
+<footer-top-template> </footer-top-template>
+<!-- End footer top area -->
+
+ <footer-bottom-template> </footer-bottom-template>   
+<!-- End footer bottom area -->

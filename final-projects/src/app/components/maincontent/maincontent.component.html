@@ -1,0 +1,29 @@
+<div class="maincontent-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="latest-product">
+                    <h2 class="section-title">Latest Products</h2>
+                    <div class="product-carousel">
+                        <div *ngFor="let item of listProducts" class="single-product">
+                            <div class="product-f-image">
+                                <img src="img/{{item.image}}" alt="">
+                                <div class="product-hover">
+                                    <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                    <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                </div>
+                            </div>
+                            
+                            <h2><a href="single-product.html">{{item.desc}}</a></h2>
+                            
+                            <div class="product-carousel-price">
+                                <ins>{{item.new_price}}</ins> <del>{{item.old_price}}</del>
+                            </div> 
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

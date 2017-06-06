@@ -17,18 +17,18 @@ import { ProductWidgetComponent } from "./components/product-widget/product-widg
 import { PromoComponent } from "./components/promo/promo.component";
 import { SliderComponent } from "./components/slider/slider.component";
 import { ProductBigTitleComponent } from "./components/product-big-title/product-big-title.component";
-import { SingleProductComponent } from "./components/single-product/single-product.component";
+import { SingleShopProductComponent } from "./components/single-shop-product/single-shop-product.component";
 
 //Modules
 import { HomeContentComponent } from "./module/home-page/home-content.component";
-import { SingleProductContentComponent } from "./module/single-product-page/single-product-content.component";
+import { SingleShopProductContentComponent } from "./module/single-shop-product-page/single-shop-product-content.component";
 
 @NgModule({
   imports:      [ BrowserModule ],
   declarations: [ AppComponent, HeaderComponent, MainmenuComponent, SiteBrandingComponent, FooterTopComponent, FooterBottomComponent,
                   BrandsComponent, MaincontentComponent, ProductWidgetComponent, PromoComponent, SliderComponent,
-                  ProductBigTitleComponent, SingleProductComponent,
-                  HomeContentComponent, SingleProductContentComponent],
+                  ProductBigTitleComponent, SingleShopProductComponent,
+                  HomeContentComponent, SingleShopProductContentComponent],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

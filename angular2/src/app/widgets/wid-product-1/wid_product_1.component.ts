@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
     moduleId: module.id,
@@ -10,4 +10,8 @@ export class WidProduct1Component implements OnInit {
     constructor() { }
 
     ngOnInit() { }
+    @Output() onAddWhitelist = new EventEmitter<string>();
+    addToCartList(){
+        this.onAddWhitelist.emit();
+    }
 }

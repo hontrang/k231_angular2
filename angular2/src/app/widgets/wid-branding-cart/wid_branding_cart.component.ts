@@ -10,4 +10,7 @@ export class WidBrandingCartComponent implements OnInit {
     constructor() { }
 
     ngOnInit() { }
+    onAddWhitelist(item: string){
+        console.log(item);
+    }
 }

@@ -11,7 +11,9 @@ export class ModSliderComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
-        this.loadjQuery();
+        setTimeout(()=>{
+            this.loadjQuery();
+        }), 50);
      }
     loadjQuery() {
         if ($('#bxslider-home4').length > 0) {

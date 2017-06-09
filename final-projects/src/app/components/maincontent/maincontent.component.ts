@@ -15,6 +15,12 @@ export class MaincontentComponent implements OnInit {
          setTimeout(() => {
             this.loadJQuery();
         });
+        let chuoi_ds_gio_hang = localStorage.getItem("gio_hang");
+
+        if(chuoi_ds_gio_hang != "" && chuoi_ds_gio_hang != null)
+        {
+            this.listGioHang = JSON.parse(chuoi_ds_gio_hang);
+        }
      }
     
      listProducts:any[] =[
@@ -181,8 +187,9 @@ export class MaincontentComponent implements OnInit {
             soluongsp += sp_gio_hang.soluong * 1;
             tongtien +=sp_gio_hang.soluong * sp_gio_hang.new_price;
         });
-         $(".product-count").html(soluongsp);
-        $(".cart-amunt").html(tongtien);
+       localStorage.setItem("gio_hang", JSON.stringify(this.listGioHang));
+        $(".product-count").html(soluongsp);
+        $(".cart-amunt").html('$'+tongtien);
     //    AddToCart(sp:any){
 
     //     if(this.listProducts.length>0)

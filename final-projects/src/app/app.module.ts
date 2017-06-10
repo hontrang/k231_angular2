@@ -29,7 +29,9 @@ import { HomeContentComponent } from "./module/home-page/home-content.component"
 import { SignUpComponent } from "./module/sign-up-page/sign-up.component";
 import { SingleShopProductContentComponent } from "./module/single-shop-product-page/single-shop-product-content.component";
 import { SingleProductContentComponent } from "./module/single-product-page/single-product-content.component";
+//Service
 
+import { SingleProductLeftService } from "./services/single-product-left-service.service";
 @NgModule({
   imports:      [ BrowserModule,FormsModule ],
   declarations: [ AppComponent, HeaderComponent, MainmenuComponent, SiteBrandingComponent, FooterTopComponent, FooterBottomComponent,
@@ -37,6 +39,7 @@ import { SingleProductContentComponent } from "./module/single-product-page/sing
                   ProductBigTitleComponent, SingleShopProductComponent,
                   HomeContentComponent, SingleShopProductContentComponent,ChatComponent,SignUpComponent,
                   SingleProductLeftComponent,SingleProductRightComponent,SingleProductContentComponent],
+  providers: [SingleProductLeftService],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

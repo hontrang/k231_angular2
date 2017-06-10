@@ -24,14 +24,20 @@ import { SingleShopProductComponent } from "./components/single-shop-product/sin
 //Modules
 import { HomeContentComponent } from "./module/home-page/home-content.component";
 import { SignUpComponent } from "./module/sign-up-page/sign-up.component";
+import { LoginPageComponent } from "./module/login-page/login-page.component";
 import { SingleShopProductContentComponent } from "./module/single-shop-product-page/single-shop-product-content.component";
+
+
+//Service
+import {ProductService} from './services/product.service';
 
 @NgModule({
   imports:      [ BrowserModule,FormsModule ],
   declarations: [ AppComponent, HeaderComponent, MainmenuComponent, SiteBrandingComponent, FooterTopComponent, FooterBottomComponent,
                   BrandsComponent, MaincontentComponent, ProductWidgetComponent, PromoComponent, SliderComponent,
                   ProductBigTitleComponent, SingleShopProductComponent,
-                  HomeContentComponent, SingleShopProductContentComponent,ChatComponent,SignUpComponent],
-  bootstrap:    [ AppComponent ]
+                  HomeContentComponent, SingleShopProductContentComponent,ChatComponent,SignUpComponent,LoginPageComponent],
+  bootstrap:    [ AppComponent ],
+  providers: [ProductService]
 })
 export class AppModule { }

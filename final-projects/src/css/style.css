@@ -1148,7 +1148,9 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
     padding:5px;
     z-index: 999;
     border: 1px solid blue;
+    word-break: break-all;
 }
+
 .noidungchat{
     width: 300px;
     background: white;
@@ -1156,16 +1158,21 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
     border: 1px solid blue;
 }
 .noidungchat>textarea{
-    width: 300px;
     background: white;
      border: 1px solid blue;
+     width: 70%;
+}
+.noidungchat button{
+    width: 30%;
+    float: right;
+    margin-top: 50;
 }
 .item_chat.owner{
     float:left;
     background:dodgerblue;
     border-radius: 10px 10px 10px 0;
-      margin-right:15px;
-      padding:5px;
+    margin-right:15px;
+    padding:5px;
     
 }
 .item_chat{
@@ -1174,6 +1181,8 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
     border-radius: 10px 10px 0px 10px;
     margin-left:5px;
     padding:5px;
+    width: 200px;
+    margin-top: 5px;
 }
 
 

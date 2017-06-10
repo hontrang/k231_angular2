@@ -13,6 +13,9 @@ var WidBrandingCartComponent = (function () {
     function WidBrandingCartComponent() {
     }
     WidBrandingCartComponent.prototype.ngOnInit = function () { };
+    WidBrandingCartComponent.prototype.onAddWhitelist = function (item) {
+        console.log(item);
+    };
     return WidBrandingCartComponent;
 }());
 WidBrandingCartComponent = __decorate([

@@ -20,8 +20,7 @@ import { PromoComponent } from "./components/promo/promo.component";
 import { SliderComponent } from "./components/slider/slider.component";
 import { ProductBigTitleComponent } from "./components/product-big-title/product-big-title.component";
 import { SingleShopProductComponent } from "./components/single-shop-product/single-shop-product.component";
-import {SingleProductLeftComponent} from "./components/single-product-left/single-product-left.component";
-import {SingleProductRightComponent} from "./components/single-product-right/single-product-right.component";
+
 
 
 //Modules
@@ -31,15 +30,15 @@ import { SingleShopProductContentComponent } from "./module/single-shop-product-
 import { SingleProductContentComponent } from "./module/single-product-page/single-product-content.component";
 //Service
 
-import { SingleProductLeftService } from "./services/single-product-left-service.service";
+//import { SingleProductLeftService } from "./services/single-product-left-service.service";
 @NgModule({
   imports:      [ BrowserModule,FormsModule ],
   declarations: [ AppComponent, HeaderComponent, MainmenuComponent, SiteBrandingComponent, FooterTopComponent, FooterBottomComponent,
                   BrandsComponent, MaincontentComponent, ProductWidgetComponent, PromoComponent, SliderComponent,
                   ProductBigTitleComponent, SingleShopProductComponent,
                   HomeContentComponent, SingleShopProductContentComponent,ChatComponent,SignUpComponent,
-                  SingleProductLeftComponent,SingleProductRightComponent,SingleProductContentComponent],
-  providers: [SingleProductLeftService],
+                  ],
+  //providers: [SingleProductLeftService],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

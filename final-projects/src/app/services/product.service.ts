@@ -13,7 +13,6 @@ export class ProductService {
         return ListProduct;
     }
     get_list_product_with_price(name: string) {
-        console.log(this._userService.checkUserLogged());
         if (this._userService.checkUserLogged()) {
             return Promise.resolve(ListProduct);
         } else {

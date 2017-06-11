@@ -20,15 +20,15 @@ export class MaincontentComponent implements OnInit {
             });
         });
 
-        productService.get_list_product_with_price("LG").then(data => {
-            this.listProducts = data;
-        });
+        // productService.get_list_product_with_price("LG").then(data => {
+        //     this.listProducts = data;
+        // });
 
     }
     ngOnInit() {
         setTimeout(() => {
             this.loadJQuery();
-        });
+        },100);
         let chuoi_ds_gio_hang = localStorage.getItem("gio_hang");
 
         if (chuoi_ds_gio_hang != "" && chuoi_ds_gio_hang != null) {

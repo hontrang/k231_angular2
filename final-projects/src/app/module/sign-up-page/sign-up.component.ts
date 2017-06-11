@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NguoiDung} from '../../models/user.component';
+import {UserService} from '../../services/user.service'
 import { NgForm } from "@angular/forms";
 declare var $: any;
 @Component({
@@ -13,11 +14,16 @@ export class SignUpComponent implements OnInit {
     users_pool :NguoiDung[] = [];
     nguoi_dung:NguoiDung = new NguoiDung("","","","","","");
     UserLogIn: any;
-    constructor() { 
+    constructor(private _userService: UserService) { 
         let chuoi_nguoi_dung = localStorage.getItem("nguoi_dung");
         if (chuoi_nguoi_dung != "" && chuoi_nguoi_dung != null) {
             this.UserLogIn = JSON.parse(chuoi_nguoi_dung);
         }
+        this._userService.$getEventSubject.subscribe($event=> {
+           setTimeout(()=>{
+                this.UserLogIn = this._userService.getLoggedUser();
+           },50);
+        });
     }
     onSubmitRegistration(form: NgForm){
         this.isSubmitted = true;

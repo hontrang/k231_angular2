@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-declare var $ : any;
+import { UserService } from "../../services/user.service";
+declare var $: any;
 
 @Component({
     selector: 'log-in',
@@ -28,17 +29,18 @@ export class LoginPageComponent implements OnInit {
         }
     ];
     UserLogIn: any;
-    login_success =  false;
+    login_success = false;
     isForgotPw = false;
     user: any = {
         email: "team02@gmail.com",
         matkhau: "123456"
     }
 
-    constructor() {
+    constructor(private _userService: UserService) {
         let chuoi_nguoi_dung = localStorage.getItem("nguoi_dung");
         if (chuoi_nguoi_dung != "" && chuoi_nguoi_dung != null) {
             this.UserLogIn = JSON.parse(chuoi_nguoi_dung);
+            this._userService.setLoggedStatus(true);
         }
     }
     btn_log_in(email: any, matkhau: any) {
@@ -48,7 +50,9 @@ export class LoginPageComponent implements OnInit {
                 // alert("Đăng nhập thành công!");
                 this.login_success = true;
                 $("#login-modal").modal("hide");
-                setTimeout(() => this.reload(),2000);
+                this._userService.setLoggedStatus(true);
+                this.UserLogIn = localStorage.getItem('nguoi_dung');
+                // this.reload();
             }
             else {
                 alert("Mật khẩu không chính xác");
@@ -58,14 +62,15 @@ export class LoginPageComponent implements OnInit {
             alert("tài khoản không tồn tại!");
         }
     }
-    reload(){
+    reload() {
         window.location.reload();
     }
-    logout(){
+    logout() {
         localStorage.removeItem("nguoi_dung");
-        this.reload();
+        this._userService.setLoggedStatus(false);
+        // this.reload();
     }
-    forgotPasswd(){
+    forgotPasswd() {
         this.isForgotPw = true;
     }
     ngOnInit() { }

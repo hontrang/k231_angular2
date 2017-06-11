@@ -36,6 +36,18 @@ body { font-family:Arial, Helvetica, sans-serif; }
 .header-area a {
     color: #888;
 }
+
+
+.dropdown-menu>li{
+    width: 200px;
+    background: #fff;
+}
+.dropdown-menu>li>a:hover{
+    color: #fff;
+    width: 100%;
+    background: #357ae8;
+}
+
 .user-menu ul {
     list-style: outside none none;
     margin: 0;

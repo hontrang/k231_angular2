@@ -4,6 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent }  from './app.component';
 //Form 
 import {FormsModule} from '@angular/forms';
+
+
+//Router
+import {routedComponents} from './routing'
+
 //Templates
 import { HeaderComponent } from "./templates/header/header.component";
 import { MainmenuComponent } from "./templates/mainmenu/mainmenu.component";
@@ -30,14 +35,16 @@ import { SingleShopProductContentComponent } from "./module/single-shop-product-
 
 //Service
 import {ProductService} from './services/product.service';
+import {UserService} from './services/user.service';
+import {EventSubscribeService} from './services/refesh-event.service'
 
 @NgModule({
-  imports:      [ BrowserModule,FormsModule ],
+  imports:      [ BrowserModule,FormsModule,routedComponents ],
   declarations: [ AppComponent, HeaderComponent, MainmenuComponent, SiteBrandingComponent, FooterTopComponent, FooterBottomComponent,
                   BrandsComponent, MaincontentComponent, ProductWidgetComponent, PromoComponent, SliderComponent,
                   ProductBigTitleComponent, SingleShopProductComponent,
                   HomeContentComponent, SingleShopProductContentComponent,ChatComponent,SignUpComponent,LoginPageComponent],
   bootstrap:    [ AppComponent ],
-  providers: [ProductService]
+  providers: [ProductService,UserService,EventSubscribeService]
 })
 export class AppModule { }

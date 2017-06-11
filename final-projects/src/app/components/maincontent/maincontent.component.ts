@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from "../../models/product";
 
-import {ProductService} from "../../services/product.service";
+import { ProductService } from "../../services/product.service";
+import {EventSubscribeService } from "../../services/refesh-event.service";
 declare var $: any;
 
 @Component({
@@ -12,10 +13,17 @@ declare var $: any;
 export class MaincontentComponent implements OnInit {
     listGioHang: any[] = [];
     listProducts: any[] = [];
-    constructor(private productService: ProductService) { 
-        productService.get_list_product_with_price(500).then( data => {
+    constructor(private productService: ProductService,private serviceInstance: EventSubscribeService) {
+        this.serviceInstance.$getEventSubject.subscribe( event => {
+            productService.get_list_product_with_price("LG").then(data => {
+                this.listProducts = data;
+            });
+        });
+
+        productService.get_list_product_with_price("LG").then(data => {
             this.listProducts = data;
         });
+
     }
     ngOnInit() {
         setTimeout(() => {

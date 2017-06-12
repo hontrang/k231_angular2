@@ -10,21 +10,22 @@
                             <div class="product-f-image">
                                 <img src="img/{{item.image}}" alt="">
                                 <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link" (click)="AddToCart(item.id)"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                    <a class="add-to-cart-link" (click)="AddToCart(item)"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                    <a class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                 </div>
                             </div>
-                             <h2><a href="single-product.html">{{item.desc}}</a></h2>
-                            
+                            <h2><a href="single-product.html">{{item.desc}}</a></h2>
+
                             <div class="product-carousel-price" *ngIf="item.old_price > 0">
-                                <ins>${{item.new_price}}</ins> <del>${{item.old_price}}</del>
-                            </div> 
+                                <ins>${{item.new_price}}</ins>
+                                <del>${{item.old_price}}</del>
+                            </div>
 
                             <div class="product-carousel-price" *ngIf="item.old_price == 0">
                                 <ins>${{item.new_price}}</ins>
-                            </div> 
-                           
-                        </div>                        
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>

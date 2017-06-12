@@ -1,13 +1,13 @@
-import { NgModule }      from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppComponent }  from './app.component';
+import { AppComponent } from './app.component';
 //Form 
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 
 //Router
-import {routedComponents} from './routing'
+import { routedComponents } from './routing'
 
 //Templates
 import { HeaderComponent } from "./templates/header/header.component";
@@ -15,7 +15,7 @@ import { MainmenuComponent } from "./templates/mainmenu/mainmenu.component";
 import { SiteBrandingComponent } from "./templates/site-branding/site-branding.component";
 import { FooterTopComponent } from "./templates/footer-top/footer-top.component";
 import { FooterBottomComponent } from "./templates/footer-bottom/footer-bottom.component";
-import { ChatComponent} from "./templates/chat/chat.component";
+import { ChatComponent } from "./templates/chat/chat.component";
 
 //Components
 import { BrandsComponent } from "./components/brands/brands.component";
@@ -34,17 +34,17 @@ import { SingleShopProductContentComponent } from "./module/single-shop-product-
 
 
 //Service
-import {ProductService} from './services/product.service';
-import {UserService} from './services/user.service';
-import {EventSubscribeService} from './services/refesh-event.service'
+import { ProductService } from './services/product.service';
+import { UserService } from './services/user.service';
+import { CartService } from './services/cart.service';
 
 @NgModule({
-  imports:      [ BrowserModule,FormsModule,routedComponents ],
-  declarations: [ AppComponent, HeaderComponent, MainmenuComponent, SiteBrandingComponent, FooterTopComponent, FooterBottomComponent,
-                  BrandsComponent, MaincontentComponent, ProductWidgetComponent, PromoComponent, SliderComponent,
-                  ProductBigTitleComponent, SingleShopProductComponent,
-                  HomeContentComponent, SingleShopProductContentComponent,ChatComponent,SignUpComponent,LoginPageComponent],
-  bootstrap:    [ AppComponent ],
-  providers: [ProductService,UserService,EventSubscribeService]
+  imports: [BrowserModule, FormsModule, routedComponents],
+  declarations: [AppComponent, HeaderComponent, MainmenuComponent, SiteBrandingComponent, FooterTopComponent, FooterBottomComponent,
+    BrandsComponent, MaincontentComponent, ProductWidgetComponent, PromoComponent, SliderComponent,
+    ProductBigTitleComponent, SingleShopProductComponent,
+    HomeContentComponent, SingleShopProductContentComponent, ChatComponent, SignUpComponent, LoginPageComponent],
+  bootstrap: [AppComponent],
+  providers: [ProductService, UserService, CartService]
 })
 export class AppModule { }

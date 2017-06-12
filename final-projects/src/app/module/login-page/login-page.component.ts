@@ -38,12 +38,13 @@ export class LoginPageComponent implements OnInit {
         let chuoi_nguoi_dung = localStorage.getItem("nguoi_dung");
         if (chuoi_nguoi_dung != "" && chuoi_nguoi_dung != null) {
             this.UserLogIn = JSON.parse(chuoi_nguoi_dung);
-            this._userService.setLoggedStatus(true);
+            this._userService.setLoggedUser(this.UserLogIn);
+        }
+        else {
+            this._userService.setLoggedUser(undefined);
         }
         this._userService.$getEventSubject.subscribe($event => {
-            setTimeout(() => {
-                this.UserLogIn = this._userService.getLoggedUser();
-            }, 50);
+            this.UserLogIn = this._userService.getLoggedUser();
         });
     }
     setUserLogin(user: any) {
@@ -58,10 +59,9 @@ export class LoginPageComponent implements OnInit {
                 // this.setUserLogin(this.user);
                 localStorage.setItem("nguoi_dung", JSON.stringify(this.user));
                 this.setProcessLoginStatus(true);
+                this._userService.setLoggedUser(this.user);
                 setTimeout(() => {
                     $("#login-modal").modal("hide");
-                    this._userService.setLoggedStatus(true);
-                    this._userService.setLoggedUser(this.user);
                 }, 1000);
             }
             else {
@@ -77,7 +77,6 @@ export class LoginPageComponent implements OnInit {
     }
     logout() {
         localStorage.removeItem("nguoi_dung");
-        this._userService.setLoggedStatus(false);
         this._userService.setLoggedUser(undefined);
         this.setProcessLoginStatus(false);
     }

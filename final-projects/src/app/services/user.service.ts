@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { EventSubscribeService } from "../services/refesh-event.service";
 import { NguoiDung } from "../models/user.component"
 import { Observable, Subject, ReplaySubject } from 'rxjs';
 
@@ -11,7 +10,7 @@ export class UserService {
     loggedUser: NguoiDung = undefined;
     private eventSubject: Subject<any> = new ReplaySubject(1);
 
-    constructor(private serviceInstance: EventSubscribeService) {
+    constructor() {
         if (localStorage.getItem("nguoi_dung")) {
             this.setLoggedStatus(true);
         }
@@ -21,14 +20,15 @@ export class UserService {
     }
 
     setLoggedStatus(status: boolean) {
-        this.serviceInstance.sendCustomEvent();
+        this.sendCustomEvent();
         this.isLogged = status;
     }
     setLoggedUser(user: NguoiDung) {
-        this.sendCustomEvent();
         this.loggedUser = user;
-        if(user!= undefined){
-            this.isLogged = true;
+        if(user != undefined){
+            this.setLoggedStatus(true);
+        }else{
+            this.setLoggedStatus(false);
         }
     }
     getLoggedUser() {

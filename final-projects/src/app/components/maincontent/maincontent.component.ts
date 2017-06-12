@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from "../../models/product";
 
 import { ProductService } from "../../services/product.service";
-import {EventSubscribeService } from "../../services/refesh-event.service";
+import { UserService } from "../../services/user.service";
+import { CartService } from "../../services/cart.service";
 declare var $: any;
 
 @Component({
@@ -13,11 +14,17 @@ declare var $: any;
 export class MaincontentComponent implements OnInit {
     listGioHang: any[] = [];
     listProducts: any[] = [];
-    constructor(private productService: ProductService,private serviceInstance: EventSubscribeService) {
-        this.serviceInstance.$getEventSubject.subscribe( event => {
-            productService.get_list_product_with_price("LG").then(data => {
-                this.listProducts = data;
-            });
+    constructor(private productService: ProductService, private _userService: UserService, private _cartService: CartService) {
+        this._userService.$getEventSubject.subscribe(event => {
+            //wait for user log changed
+            setTimeout(() => {
+                this.productService.get_list_product_with_price("LG").then(data => {
+                    this.listProducts = data;
+                    setTimeout(()=>{
+                        this.loadJQuery();
+                    },50);
+                });
+            }, 50)
         });
 
         // productService.get_list_product_with_price("LG").then(data => {
@@ -26,9 +33,10 @@ export class MaincontentComponent implements OnInit {
 
     }
     ngOnInit() {
-        setTimeout(() => {
-            this.loadJQuery();
-        },100);
+        this._userService.$getEventSubject.subscribe(event => {
+            
+        });
+
         let chuoi_ds_gio_hang = localStorage.getItem("gio_hang");
 
         if (chuoi_ds_gio_hang != "" && chuoi_ds_gio_hang != null) {
@@ -39,7 +47,6 @@ export class MaincontentComponent implements OnInit {
 
     loadJQuery() {
         // jQuery sticky Menu
-
         $(".mainmenu-area").sticky({ topSpacing: 0 });
 
 
@@ -124,40 +131,42 @@ export class MaincontentComponent implements OnInit {
         })
     }
 
-    AddToCart(id_sp: any) {
-        this.listProducts.forEach((san_pham) => {
-            if (san_pham.id == id_sp) {
+    AddToCart(item: Product) {
+        this._cartService.cartChange('add',item);
+        
+        // this.listProducts.forEach((san_pham) => {
+        //     if (san_pham.id == id_sp) {
 
-                if (this.listGioHang.length > 0) {
-                    let check = 0;
-                    this.listGioHang.forEach(san_pham_gio_hang => {
-                        if (san_pham_gio_hang.id === id_sp) {
-                            san_pham_gio_hang.soluong += 1;
-                            check = 1;
-                        }
+        //         if (this.listGioHang.length > 0) {
+        //             let check = 0;
+        //             this.listGioHang.forEach(san_pham_gio_hang => {
+        //                 if (san_pham_gio_hang.id === id_sp) {
+        //                     san_pham_gio_hang.soluong += 1;
+        //                     check = 1;
+        //                 }
 
-                    });
-                    if (check == 0) {
-                        san_pham.soluong = 1;
-                        this.listGioHang.push(san_pham);
-                    }
-                }
-                else {
-                    san_pham.soluong = 1;
-                    this.listGioHang.push(san_pham);
-                }
+        //             });
+        //             if (check == 0) {
+        //                 san_pham.soluong = 1;
+        //                 this.listGioHang.push(san_pham);
+        //             }
+        //         }
+        //         else {
+        //             san_pham.soluong = 1;
+        //             this.listGioHang.push(san_pham);
+        //         }
 
-            }
-        });
-        let soluongsp = 0;
-        let tongtien = 0;
-        this.listGioHang.forEach((sp_gio_hang) => {
-            soluongsp += sp_gio_hang.soluong * 1;
-            tongtien += sp_gio_hang.soluong * sp_gio_hang.new_price;
-        });
-        localStorage.setItem("gio_hang", JSON.stringify(this.listGioHang));
-        $(".product-count").html(soluongsp);
-        $(".cart-amunt").html('$' + tongtien);
+        //     }
+        // });
+        // let soluongsp = 0;
+        // let tongtien = 0;
+        // this.listGioHang.forEach((sp_gio_hang) => {
+        //     soluongsp += sp_gio_hang.soluong * 1;
+        //     tongtien += sp_gio_hang.soluong * sp_gio_hang.new_price;
+        // });
+        // localStorage.setItem("gio_hang", JSON.stringify(this.listGioHang));
+        // $(".product-count").html(soluongsp);
+        // $(".cart-amunt").html('$' + tongtien);
         //    AddToCart(sp:any){
 
         //     if(this.listProducts.length>0)

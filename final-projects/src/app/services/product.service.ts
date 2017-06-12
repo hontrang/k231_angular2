@@ -13,13 +13,7 @@ export class ProductService {
         return ListProduct;
     }
     get_list_product_with_price(name: string) {
-        if (this._userService.checkUserLogged()) {
-            return Promise.resolve(ListProduct);
-        } else {
-            return Promise.resolve(ListProduct).then(data => {
-                return data.filter(item =>item.desc.indexOf(name) > -1);
-            });
-        }
+        return Promise.resolve(ListProduct);
 
     }
 }

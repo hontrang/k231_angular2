@@ -20,25 +20,27 @@ import { PromoComponent } from "./components/promo/promo.component";
 import { SliderComponent } from "./components/slider/slider.component";
 import { ProductBigTitleComponent } from "./components/product-big-title/product-big-title.component";
 import { SingleShopProductComponent } from "./components/single-shop-product/single-shop-product.component";
-
-
+import {SingleProductLeftComponent} from "./components/single-product-left/single-product-left.component";
+import {SingleProductRightComponent} from "./components/single-product-right/single-product-right.component";
 
 //Modules
 import { HomeContentComponent } from "./module/home-page/home-content.component";
 import { SignUpComponent } from "./module/sign-up-page/sign-up.component";
+import {LoginPageComponent} from "./module/login-page/login-page.component";
 import { SingleShopProductContentComponent } from "./module/single-shop-product-page/single-shop-product-content.component";
 import { SingleProductContentComponent } from "./module/single-product-page/single-product-content.component";
 //Service
 
-//import { SingleProductLeftService } from "./services/single-product-left-service.service";
+import { ProductService } from "./services/product.service";
+//  import {EventSubscribeService} from "./services/refesh-event.service"
 @NgModule({
   imports:      [ BrowserModule,FormsModule ],
   declarations: [ AppComponent, HeaderComponent, MainmenuComponent, SiteBrandingComponent, FooterTopComponent, FooterBottomComponent,
                   BrandsComponent, MaincontentComponent, ProductWidgetComponent, PromoComponent, SliderComponent,
-                  ProductBigTitleComponent, SingleShopProductComponent,
-                  HomeContentComponent, SingleShopProductContentComponent,ChatComponent,SignUpComponent,
-                  ],
-  //providers: [SingleProductLeftService],
+                  ProductBigTitleComponent, SingleShopProductComponent,LoginPageComponent,
+                  HomeContentComponent, SingleShopProductContentComponent,ChatComponent,SignUpComponent,SingleProductLeftComponent,SingleProductRightComponent,
+                  SingleProductContentComponent ],
+  providers: [ProductService],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

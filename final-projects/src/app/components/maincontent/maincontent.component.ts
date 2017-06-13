@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 declare var jQuery: any;
 declare var $: any;
 
+
 @Component({
     selector: 'maincontent',
     templateUrl: './maincontent.component.html'

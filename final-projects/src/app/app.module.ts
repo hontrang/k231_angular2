@@ -2,6 +2,8 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent }  from './app.component';
+//Routing
+import { routedComponents } from "./routing";
 //Form 
 import {FormsModule} from '@angular/forms';
 //Templates
@@ -32,15 +34,17 @@ import { SingleProductContentComponent } from "./module/single-product-page/sing
 //Service
 
 import { ProductService } from "./services/product.service";
+import {SingleProductLeftService } from "./services/single-product-left.service";
+
 //  import {EventSubscribeService} from "./services/refesh-event.service"
 @NgModule({
-  imports:      [ BrowserModule,FormsModule ],
+  imports:      [ BrowserModule,FormsModule,routedComponents ],
   declarations: [ AppComponent, HeaderComponent, MainmenuComponent, SiteBrandingComponent, FooterTopComponent, FooterBottomComponent,
                   BrandsComponent, MaincontentComponent, ProductWidgetComponent, PromoComponent, SliderComponent,
                   ProductBigTitleComponent, SingleShopProductComponent,LoginPageComponent,
                   HomeContentComponent, SingleShopProductContentComponent,ChatComponent,SignUpComponent,SingleProductLeftComponent,SingleProductRightComponent,
                   SingleProductContentComponent ],
-  providers: [ProductService],
+  providers: [ProductService,SingleProductLeftService],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

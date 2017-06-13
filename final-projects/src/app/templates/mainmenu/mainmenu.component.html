@@ -11,9 +11,9 @@
             </div> 
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li [class]="locationPath == '/home'? 'active':''" ><a href="/home">Home</a></li>
-                    <li [class]="locationPath == '/shop' ? 'active':''" ><a href="/shop">Shop page</a></li>
-                    <li><a href="#">Single product</a></li>
+                    <li ><a [routerLink]="['/']" routerLinkActive="active-routing">Home</a></li>
+                    <li><a [routerLink]="['single-shop-product-content']" routerLinkActive="active-routing">Shop page</a></li>
+                    <li><a [routerLink]="['single-product-content']" routerLinkActive="active-routing">Single product</a></li>
                     <li><a href="#">Cart</a></li>
                     <li><a href="#">Checkout</a></li>
                     <li><a href="#">Category</a></li>

@@ -1,0 +1,97 @@
+<div class="col-md-8">
+<div class="product-content-right">
+<div class="product-breadcroumb">
+    <a href="">Home</a>
+    <a href="">Category Name</a>
+    <a href="">Sony Smart TV - 2015</a>
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="product-images">
+            <div class="product-main-img">
+                <img src="img/product-2.jpg" alt="">
+            </div>
+            
+            <div class="product-gallery">
+                <img src="img/product-thumb-1.jpg" alt="">
+                <img src="img/product-thumb-2.jpg" alt="">
+                <img src="img/product-thumb-3.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-sm-6">
+        <div class="product-inner">
+            <h2 class="product-name">Nokia Lumia 1320</h2>
+            <div class="product-inner-price">
+                <ins>$700.00</ins> <del>$100.00</del>
+            </div>    
+            
+            <form action="" class="cart">
+                <div class="quantity">
+                    <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
+                </div>
+                <button  class="add_to_cart_button" type="submit">Add to cart</button>
+            </form>   
+            
+            <div class="product-inner-category">
+                <p>Category: <a href="">Summer</a>. Tags: <a href="">awesome</a>, <a href="">best</a>, <a href="">sale</a>, <a href="">shoes</a>. </p>
+            </div> 
+            
+            <div role="tabpanel">
+                <ul class="product-tab" role="tablist">
+                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Description</a></li>
+                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Reviews</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="home">
+                        <h2>Product Description</h2>  
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique, diam in consequat iaculis, est purus iaculis mauris, imperdiet facilisis ante ligula at nulla. Quisque volutpat nulla risus, id maximus ex aliquet ut. Suspendisse potenti. Nulla varius lectus id turpis dignissim porta. Quisque magna arcu, blandit quis felis vehicula, feugiat gravida diam. Nullam nec turpis ligula. Aliquam quis blandit elit, ac sodales nisl. Aliquam eget dolor eget elit malesuada aliquet. In varius lorem lorem, semper bibendum lectus lobortis ac.</p>
+
+                        <p>Mauris placerat vitae lorem gravida viverra. Mauris in fringilla ex. Nulla facilisi. Etiam scelerisque tincidunt quam facilisis lobortis. In malesuada pulvinar neque a consectetur. Nunc aliquam gravida purus, non malesuada sem accumsan in. Morbi vel sodales libero.</p>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="profile">
+                        <h2>Reviews</h2>
+                        <form (ngSubmit)="clickReviews(form_reviews)" *ngIf="!isReviewed; else ket_qua_review" class="submit-review form_review" #form_reviews="ngForm">
+                            <label for="name">Name</label> <input id="tenreview" required #ten_review="ngModel" [(ngModel)]="user_review.ten" name="name" type="text">
+                                <div *ngIf="!ten_review.valid && ten_review.dirty" class="panel panel-warning">
+                                    <div class="panel-body">
+                                            Vui lòng nhập họ tên của bạn
+                                    </div>
+                                </div>
+                          
+                            <label for="email">Email</label> 
+                            <input id="emailreview"  required #email_review="ngModel" email [(ngModel)]="user_review.emailuser" name="email" type="email">
+                                     <div *ngIf="!email_review.valid && email_review.dirty" class="panel panel-warning">       
+                                        <div *ngIf="email_review.errors.required" class="panel-body">
+                                                Vui lòng nhập email
+                                        </div>
+                                        <div *ngIf="email_review.errors.email &&user_review.emailuser!=''" class="panel-body">
+                                                Email sai định dạng
+                                        </div>
+                                    </div>
+                               
+                            <label for="review">Your review</label> <textarea required name="review" #danh_gia="ngModel" [(ngModel)]="user_review.danh_gia" id="danhgia" cols="30" rows="10"></textarea>
+                            <div *ngIf="!danh_gia.valid && danh_gia.dirty" class="panel panel-warning">
+                                    <div class="panel-body">
+                                            Vui lòng nhập đánh giá 
+                                    </div>
+                                </div>
+                           <input type="submit"  value="Submit" [disabled]="form_reviews.form.invalid"/>
+                        </form>
+                    
+                    </div>
+                        <ng-template #ket_qua_review>
+        
+                           <h3>Kết quả đánh giá:</h3>
+                            Họ tên: {{user_review.ten}}<br>
+                             Email: {{user_review.email_review}}<br>
+                              Đánh giá: {{user_review.danh_gia}}<br>
+                        </ng-template>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

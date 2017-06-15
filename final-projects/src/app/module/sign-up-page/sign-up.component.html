@@ -45,7 +45,8 @@
                         </div>
                         <div class="form-group">
                               <label for="">Mật khẩu</label>
-                              <input required #mat_khau="ngModel" [(ngModel)]="nguoi_dung.MatKhau" type="password" class="form-control" name="mat_khau"
+                              <input pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required 
+                              #mat_khau="ngModel" [(ngModel)]="nguoi_dung.MatKhau" type="password" class="form-control" name="mat_khau"
                                     placeholder="Nhập mật khẩu">
                               <div *ngIf="!mat_khau.valid && mat_khau.dirty" class="panel panel-warning">
                                     <!--<div class="panel-heading">

@@ -25,6 +25,7 @@ import { PromoComponent } from "./components/promo/promo.component";
 import { SliderComponent } from "./components/slider/slider.component";
 import { ProductBigTitleComponent } from "./components/product-big-title/product-big-title.component";
 import { SingleShopProductComponent } from "./components/single-shop-product/single-shop-product.component";
+import { SearchEngineComponent } from "./components/search-engine/search-engine.component";
 
 //Modules
 import { HomeContentComponent } from "./module/home-page/home-content.component";
@@ -43,7 +44,7 @@ import { CartService } from './services/cart.service';
   declarations: [AppComponent, HeaderComponent, MainmenuComponent, SiteBrandingComponent, FooterTopComponent, FooterBottomComponent,
     BrandsComponent, MaincontentComponent, ProductWidgetComponent, PromoComponent, SliderComponent,
     ProductBigTitleComponent, SingleShopProductComponent,
-    HomeContentComponent, SingleShopProductContentComponent, ChatComponent, SignUpComponent, LoginPageComponent],
+    HomeContentComponent, SingleShopProductContentComponent, ChatComponent, SignUpComponent, LoginPageComponent,SearchEngineComponent],
   bootstrap: [AppComponent],
   providers: [ProductService, UserService, CartService]
 })

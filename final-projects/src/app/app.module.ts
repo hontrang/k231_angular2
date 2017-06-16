@@ -34,7 +34,7 @@ import { HomeContentComponent } from "./module/home-page/home-content.component"
 import { SignUpComponent } from "./module/sign-up-page/sign-up.component";
 import {LoginPageComponent} from "./module/login-page/login-page.component";
 import { SingleShopProductContentComponent } from "./module/single-shop-product-page/single-shop-product-content.component";
-
+import {SingleProductContentComponent} from "./module/single-product-page/single-product-content.component"
 
 //Service
 import { ProductService } from './services/product.service';
@@ -48,7 +48,7 @@ import { CartService } from './services/cart.service';
     ProductBigTitleComponent, SingleShopProductComponent,
     HomeContentComponent, SingleShopProductContentComponent, ChatComponent, SignUpComponent, LoginPageComponent,SearchEngineComponent,
     SingleProductLeftComponent,SingleProductRightComponent,
-    SingleShopProductContentComponent ],
+    SingleShopProductContentComponent,SingleProductContentComponent ],
   bootstrap: [AppComponent],
   providers: [ProductService, UserService, CartService]
 })

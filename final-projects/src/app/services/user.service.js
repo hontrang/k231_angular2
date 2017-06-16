@@ -9,11 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var refesh_event_service_1 = require("../services/refesh-event.service");
+var rxjs_1 = require("rxjs");
 var UserService = (function () {
-    function UserService(serviceInstance) {
-        this.serviceInstance = serviceInstance;
+    function UserService() {
         this.isLogged = false;
+        this.loggedUser = undefined;
+        this.eventSubject = new rxjs_1.ReplaySubject(1);
         if (localStorage.getItem("nguoi_dung")) {
             this.setLoggedStatus(true);
         }
@@ -22,15 +23,42 @@ var UserService = (function () {
         return this.isLogged;
     };
     UserService.prototype.setLoggedStatus = function (status) {
-        this.serviceInstance.sendCustomEvent();
-        console.log(status);
+        this.sendCustomEvent();
         this.isLogged = status;
+    };
+    UserService.prototype.setLoggedUser = function (user) {
+        this.loggedUser = user;
+        if (user != undefined) {
+            this.setLoggedStatus(true);
+        }
+        else {
+            this.setLoggedStatus(false);
+        }
+    };
+    UserService.prototype.getLoggedUser = function () {
+        return this.loggedUser;
+    };
+    Object.defineProperty(UserService.prototype, "$getEventSubject", {
+        // set observable of this subject
+        get: function () {
+            return this.eventSubject.asObservable();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    // remove from observer
+    UserService.prototype.resetEventObserver = function () {
+        this.eventSubject = new rxjs_1.ReplaySubject(1);
+    };
+    // send event to observers
+    UserService.prototype.sendCustomEvent = function () {
+        this.eventSubject.next(true);
     };
     return UserService;
 }());
 UserService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [refesh_event_service_1.EventSubscribeService])
+    __metadata("design:paramtypes", [])
 ], UserService);
 exports.UserService = UserService;
 //# sourceMappingURL=user.service.js.map

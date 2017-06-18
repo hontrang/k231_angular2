@@ -1,10 +1,10 @@
 .form_dang_ky{
-    margin-left:100px;
-    margin-right: 100px;
-    margin-top:40px;
+    margin-left:20px;
+    margin-right: 20px;
+    margin-top:10px;
 }
 .form_dang_ky input{
-    height: 20px;
+    height: 30px;
 }
 .form_dang_ky input.ng-valid{
     border-left: 5px solid blue;

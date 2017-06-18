@@ -10,8 +10,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var rxjs_1 = require("rxjs");
+require("rxjs/add/operator/toPromise");
+var http_1 = require("@angular/http");
 var UserService = (function () {
-    function UserService() {
+    function UserService(_http) {
+        this._http = _http;
+        this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         this.isLogged = false;
         this.loggedUser = undefined;
         this.eventSubject = new rxjs_1.ReplaySubject(1);
@@ -21,6 +25,22 @@ var UserService = (function () {
     }
     UserService.prototype.checkUserLogged = function () {
         return this.isLogged;
+    };
+    UserService.prototype.getAPIByHttp = function () {
+        return this._http.get("http://172.25.55.10:8000/")
+            .toPromise()
+            .then(function (data) { return data.json(); })
+            .catch(this.handleError);
+    };
+    UserService.prototype.createNewUser = function (user) {
+        return this._http.post("http://172.25.55.10:8000/", JSON.stringify({ name: name }), { headers: this.headers })
+            .toPromise()
+            .then(function (res) { return res.json(); })
+            .catch(this.handleError);
+    };
+    UserService.prototype.handleError = function (error) {
+        console.error('An error occurred', error); // for demo purposes only
+        return Promise.reject(error.message || error);
     };
     UserService.prototype.setLoggedStatus = function (status) {
         this.sendCustomEvent();
@@ -58,7 +78,7 @@ var UserService = (function () {
 }());
 UserService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [http_1.Http])
 ], UserService);
 exports.UserService = UserService;
 //# sourceMappingURL=user.service.js.map

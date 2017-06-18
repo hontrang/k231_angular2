@@ -6,7 +6,6 @@ import { UserService } from "../../services/user.service";
 import { CartService } from "../../services/cart.service";
 declare var $: any;
 
-
 @Component({
     selector: 'maincontent',
     templateUrl: './maincontent.component.html'
@@ -14,22 +13,32 @@ declare var $: any;
 
 export class MaincontentComponent implements OnInit {
     listGioHang: any[] = [];
-    constructor(private productService: ProductService, private _userService: UserService, private _cartService: CartService) {
+    listProducts: any[] = [];
+    listFromAPI: Product[] =[];
+    constructor(private _productService: ProductService, private _userService: UserService, private _cartService: CartService) {
         this._userService.$getEventSubject.subscribe(event => {
             //wait for user log changed
             setTimeout(() => {
-                this.productService.get_list_product_with_price("LG").then(data => {
-                    this.listProducts = data;
-                    setTimeout(() => {
+                this._productService.get_list_product_with_price("LG").then(data => {
+                    this.listProducts = data.slice(0,8);
+                    setTimeout(()=>{
                         this.loadJQuery();
-                    }, 50);
+                    },50);
                 });
             }, 50)
         });
+        this._productService.getListProductFromPublicAPI().subscribe(data => {
+            this.listFromAPI = data;
+            console.log(this.listFromAPI)
+        });
+        // productService.get_list_product_with_price("LG").then(data => {
+        //     this.listProducts = data;
+        // });
+
     }
     ngOnInit() {
         this._userService.$getEventSubject.subscribe(event => {
-
+            
         });
 
         let chuoi_ds_gio_hang = localStorage.getItem("gio_hang");
@@ -39,51 +48,9 @@ export class MaincontentComponent implements OnInit {
         }
     }
 
-    listProducts: any[] = [
-        {
-            "id": 1,
-            "desc": "Samsung Galaxy s5- 2015",
-            "new_price": "700.00",
-            "old_price": "100.00",
-            "image": "product-1.jpg"
-        },
-        {
-            "id": 2,
-            "desc": "Nokia Lumia 1320",
-            "new_price": "899.00",
-            "old_price": "999.00",
-            "image": "product-2.jpg"
-        },
-        {
-            "id": 3,
-            "desc": "LG Leon 2015",
-            "new_price": "400.00",
-            "old_price": "425.00",
-            "image": "product-3.jpg"
-        },
-        {
-            "id": 4,
-            "desc": "Sony microsoft",
-            "new_price": "200.00",
-            "old_price": "",
-            "image": "product-4.jpg"
-        },
-        {
-            "id": 5,
-            "desc": "iPhone 6",
-            "new_price": "1200.00",
-            "old_price": "1355.00",
-            "image": "product-5.jpg"
-        },
-        {
-            "id": 9,
-            "desc": "Samsung gallaxy note 4",
-            "new_price": "400.00",
-            "old_price": "",
-            "image": "product-6.jpg"
-        }
-    ];
-
+    showDetail(){
+    
+    }
     loadJQuery() {
         // jQuery sticky Menu
         $(".mainmenu-area").sticky({ topSpacing: 0 });
@@ -171,8 +138,8 @@ export class MaincontentComponent implements OnInit {
     }
 
     AddToCart(item: Product) {
-        this._cartService.cartChange('add', item);
-
+        this._cartService.cartChange('add',item);
+        
         // this.listProducts.forEach((san_pham) => {
         //     if (san_pham.id == id_sp) {
 
@@ -242,8 +209,5 @@ export class MaincontentComponent implements OnInit {
         //  console.log( this.list_product);
 
     }
-    // productService.get_list_product_with_price("LG").then(data => {
-    //     this.listProducts = data;
-    // });
 
 }

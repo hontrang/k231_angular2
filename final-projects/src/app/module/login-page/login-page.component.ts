@@ -33,7 +33,7 @@ export class LoginPageComponent implements OnInit {
     process_login_success = false;
     isForgotPw = false;
     user = new NguoiDung("team02", "team02@gmail.com", "123456", "01/01/2000", "123456789", "12345 abc");
-
+    listUser: NguoiDung[] = [];
     constructor(private _userService: UserService) {
         let chuoi_nguoi_dung = localStorage.getItem("nguoi_dung");
         if (chuoi_nguoi_dung != "" && chuoi_nguoi_dung != null) {
@@ -45,6 +45,9 @@ export class LoginPageComponent implements OnInit {
         }
         this._userService.$getEventSubject.subscribe($event => {
             this.UserLogIn = this._userService.getLoggedUser();
+        });
+        this._userService.getAPIByHttp().then(data => {
+            this.listUser = data;
         });
     }
     setUserLogin(user: any) {
@@ -82,6 +85,10 @@ export class LoginPageComponent implements OnInit {
     }
     forgotPasswd() {
         this.isForgotPw = true;
+    }
+
+    Upload(){
+        this._userService.createNewUser(this.user).then(data => console.log(data));
     }
     ngOnInit() { }
 }

@@ -11,9 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var mock_product_1 = require("../models/mock_product");
 var user_service_1 = require("../services/user.service");
+require("rxjs/add/operator/toPromise");
+var http_1 = require("@angular/http");
 var ProductService = (function () {
-    function ProductService(_userService) {
+    function ProductService(_userService, _http) {
         this._userService = _userService;
+        this._http = _http;
     }
     ProductService.prototype.get_list_product = function () {
         return mock_product_1.ListProduct;
@@ -21,11 +24,20 @@ var ProductService = (function () {
     ProductService.prototype.get_list_product_with_price = function (name) {
         return Promise.resolve(mock_product_1.ListProduct);
     };
+    ProductService.prototype.get_product_by_id = function (id) {
+        return Promise.resolve(mock_product_1.ListProduct).then(function (data) { return data.filter(function (item) { return item.id == id; }); });
+    };
+    ProductService.prototype.get_product_by_desc = function (name) {
+        return Promise.resolve(mock_product_1.ListProduct).then(function (data) { return data.filter(function (item) { return item.desc.indexOf(name) != -1; }); });
+    };
+    ProductService.prototype.getListProductFromPublicAPI = function () {
+        return this._http.get("http://dev-er.com/service_api_ban_hang_dien_tu/api_service_san_pham.php").map(function (response) { return response.json(); });
+    };
     return ProductService;
 }());
 ProductService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [user_service_1.UserService])
+    __metadata("design:paramtypes", [user_service_1.UserService, http_1.Http])
 ], ProductService);
 exports.ProductService = ProductService;
 //# sourceMappingURL=product.service.js.map

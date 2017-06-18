@@ -307,7 +307,9 @@ padding-right: 20px;
 .block-slider .caption-group .caption{
 
 }
-
+.brands-area ul{
+    background: #000;
+}
 /*----------------------
 [10. Block top seller ]
 ------------------------*/
@@ -611,7 +613,9 @@ padding-right: 20px;
 .footer-top-area .zigzag-bottom{background: #f4f4f4}
 .footer-top-area {background: none repeat scroll 0 0 #333;
 color: #999;
-padding: 35px 0 180px;}
+padding: 35px 0 180px;
+margin-top:30px;
+}
 
 
 .footer-bottom-area {background: #000;color: #fff}

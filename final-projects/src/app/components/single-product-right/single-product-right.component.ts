@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
+import { ActivatedRoute, Params }   from '@angular/router';
+import {ProductService} from '../../services/product.service'
+import 'rxjs/add/operator/switchMap';
+
 declare var jQuery: any;
 @Component({
     selector: 'single-product-right',
@@ -19,9 +23,26 @@ export class SingleProductRightComponent implements OnInit {
     listSingleProductRight:any[]=[];    
        listGioHang:any[]=[];
     isReviewed:boolean=false;
-    constructor() { }
+    productDetail:any;
 
-    ngOnInit() { }
+
+   
+    constructor(private route:ActivatedRoute,private productservice:ProductService) {
+        
+     }
+
+    ngOnInit() {
+
+        this.route.params
+        .switchMap((params: Params) => this.productservice.get_list_productById(+params['id_san_pham']))
+        .subscribe(product=>{
+            this.productDetail=product[0];
+            console.log(this.productDetail);
+        });
+
+        console.log(this.route.params);
+
+     }
 
     //Xử lý button review
     clickReviews(form:NgForm){

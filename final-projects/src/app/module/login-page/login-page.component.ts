@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from "../../services/user.service";
-import { NguoiDung } from "../../models/user.component";
 declare var $: any;
 
 @Component({
@@ -30,39 +29,30 @@ export class LoginPageComponent implements OnInit {
         }
     ];
     UserLogIn: any;
-    process_login_success = false;
+    login_success = false;
     isForgotPw = false;
-    user = new NguoiDung("team02", "team02@gmail.com", "123456", "01/01/2000", "123456789", "12345 abc");
+    user: any = {
+        email: "team02@gmail.com",
+        matkhau: "123456"
+    }
 
     constructor(private _userService: UserService) {
         let chuoi_nguoi_dung = localStorage.getItem("nguoi_dung");
         if (chuoi_nguoi_dung != "" && chuoi_nguoi_dung != null) {
             this.UserLogIn = JSON.parse(chuoi_nguoi_dung);
-            this._userService.setLoggedUser(this.UserLogIn);
+            this._userService.setLoggedStatus(true);
         }
-        else {
-            this._userService.setLoggedUser(undefined);
-        }
-        this._userService.$getEventSubject.subscribe($event => {
-            this.UserLogIn = this._userService.getLoggedUser();
-        });
-    }
-    setUserLogin(user: any) {
-        this.UserLogIn = user;
-    }
-    setProcessLoginStatus(status: boolean) {
-        this.process_login_success = status;
     }
     btn_log_in(email: any, matkhau: any) {
-        if (email.value == this.user.Email) {
-            if (matkhau.value == this.user.MatKhau) {
-                // this.setUserLogin(this.user);
+        if (email.value == this.user.email) {
+            if (matkhau.value == this.user.matkhau) {
                 localStorage.setItem("nguoi_dung", JSON.stringify(this.user));
-                this.setProcessLoginStatus(true);
-                this._userService.setLoggedUser(this.user);
-                setTimeout(() => {
-                    $("#login-modal").modal("hide");
-                }, 1000);
+                // alert("Đăng nhập thành công!");
+                this.login_success = true;
+                $("#login-modal").modal("hide");
+                this._userService.setLoggedStatus(true);
+                this.UserLogIn = localStorage.getItem('nguoi_dung');
+                // this.reload();
             }
             else {
                 alert("Mật khẩu không chính xác");
@@ -77,8 +67,8 @@ export class LoginPageComponent implements OnInit {
     }
     logout() {
         localStorage.removeItem("nguoi_dung");
-        this._userService.setLoggedUser(undefined);
-        this.setProcessLoginStatus(false);
+        this._userService.setLoggedStatus(false);
+        // this.reload();
     }
     forgotPasswd() {
         this.isForgotPw = true;

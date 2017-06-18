@@ -3,6 +3,7 @@ import { ListProduct } from '../models/mock_product'
 import { UserService } from "../services/user.service";
 
 
+
 @Injectable()
 export class ProductService {
 
@@ -13,7 +14,21 @@ export class ProductService {
         return ListProduct;
     }
     get_list_product_with_price(name: string) {
-        return Promise.resolve(ListProduct);
+        console.log(this._userService.checkUserLogged());
+        if (this._userService.checkUserLogged()) {
+            return Promise.resolve(ListProduct);
+        } else {
+            return Promise.resolve(ListProduct).then(data => {
+                return data.filter(item =>item.desc.indexOf(name) > -1);
+            });
+        }
 
     }
+
+    get_list_productById(id:number) {
+        return Promise.resolve(ListProduct).then(data => {
+            return data.filter(item =>item.id == id);
+        });
+    }
+
 }

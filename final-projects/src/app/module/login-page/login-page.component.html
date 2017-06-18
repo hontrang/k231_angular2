@@ -2,11 +2,11 @@
 <ng-template #logged>
     <nav class="navbar">
         <a *ngIf="UserLogIn" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i>
-    {{UserLogIn.Email}}
+    {{UserLogIn.email}}
 </a>
         <ul class="dropdown-menu">
             <li><a href="#">Hồ Sơ</a></li>
-            <li><a href="#">Giỏ hàng</a></li>
+            <li><a href="#">Sản phẩm đã chọn</a></li>
             <li><a href="#">Sản phẩm yêu thích</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#" (click)="logout()">Thoát tài khoản</a></li>
@@ -24,7 +24,7 @@
             <ng-template #login_status>
                 <span>Login successful</span>
             </ng-template>
-            <div class="login-detail" *ngIf="!process_login_success;else login_status">
+            <div class="login-detail" *ngIf="!login_success;else login_status">
                 <h1>Login to Your Account</h1><br>
                 <form>
                     <input id="emailUser" type="text" #email name="email" placeholder="Email">

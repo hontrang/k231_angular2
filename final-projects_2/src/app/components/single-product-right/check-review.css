@@ -1,0 +1,14 @@
+.form_reviews{
+    margin-left:100px;
+    margin-right: 100px;
+    margin-top:40px;
+}
+.form_reviews input{
+    height: 20px;
+}
+
+.panel-body{
+    color:red;
+    padding: 0;
+    border:0;
+}

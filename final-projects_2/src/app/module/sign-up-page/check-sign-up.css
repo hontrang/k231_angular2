@@ -1,0 +1,22 @@
+.form_dang_ky{
+    margin-left:100px;
+    margin-right: 100px;
+    margin-top:40px;
+}
+.form_dang_ky input{
+    height: 20px;
+}
+.form_dang_ky input.ng-valid{
+    border-left: 5px solid blue;
+}
+.form_dang_ky input.ng-invalid{
+    border-left: 5px solid red;
+}
+.form_dang_ky input.ng-pristine{
+    border-left: 5px solid gray;
+}
+.panel-body{
+    color:red;
+    padding: 0;
+    border:0;
+}

@@ -1,0 +1,153 @@
+<div class="product-widget-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="single-product-widget">
+                    <h2 class="product-wid-title">Top Sellers</h2>
+                <div *ngFor="let sp of listTopSellersProducts; let i=index" >
+                    <a (click)="ViewMore($event)" *ngIf="listTopSellersProducts.length>item_hien_thi" class="wid-view-more">View More</a>
+                    <div  *ngIf="i<item_hien_thi-1" class="single-wid-product">
+                        <a  href="single-product.html"><img src="img/{{sp.image}}" alt="" class="product-thumb"></a>
+                        <h2><a href="single-product.html">{{sp.name}}</a></h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product-wid-price">
+                            <ins>${{sp.new_price}}</ins> <del>${{sp.old_price}}</del>
+                        </div>                            
+                    </div>
+                </div>
+                    <!--<div class="single-wid-product">
+                        <a href="single-product.html"><img src="img/product-thumb-2.jpg" alt="" class="product-thumb"></a>
+                        <h2><a href="single-product.html">Apple new mac book 2015</a></h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product-wid-price">
+                            <ins>$400.00</ins> <del>$425.00</del>
+                        </div>                            
+                    </div>
+                    <div class="single-wid-product">
+                        <a href="single-product.html"><img src="img/product-thumb-3.jpg" alt="" class="product-thumb"></a>
+                        <h2><a href="single-product.html">Apple new i phone 6</a></h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product-wid-price">
+                            <ins>$400.00</ins> <del>$425.00</del>
+                        </div>                            
+                    </div>-->
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="single-product-widget">
+                    <h2 class="product-wid-title">Recently Viewed</h2>
+                    <a href="#" class="wid-view-more">View All</a>
+                    <div *ngFor="let sp1 of listRecentlyViewedProducts"  class="single-wid-product">
+                        <a href="single-product.html"><img src="img/{{sp1.image}}" alt="" class="product-thumb"></a>
+                        <h2><a href="single-product.html">{{sp1.name}}</a></h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product-wid-price">
+                            <ins>${{sp1.new_price}}</ins> <del>${{sp1.old_price}}</del>
+                        </div>                            
+                    </div>
+                    <!--<div class="single-wid-product">
+                        <a href="single-product.html"><img src="img/product-thumb-1.jpg" alt="" class="product-thumb"></a>
+                        <h2><a href="single-product.html">Sony Smart Air Condtion</a></h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product-wid-price">
+                            <ins>$400.00</ins> <del>$425.00</del>
+                        </div>                            
+                    </div>
+                    <div class="single-wid-product">
+                        <a href="single-product.html"><img src="img/product-thumb-2.jpg" alt="" class="product-thumb"></a>
+                        <h2><a href="single-product.html">Samsung gallaxy note 4</a></h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product-wid-price">
+                            <ins>$400.00</ins> <del>$425.00</del>
+                        </div>                            
+                    </div>-->
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="single-product-widget">
+                    <h2 class="product-wid-title">Top New</h2>
+                    <a href="#" class="wid-view-more">View All</a>
+                    <div *ngFor="let sp2 of  listTopNewProducts"  class="single-wid-product">
+                        <a href="single-product.html"><img src="img/{{sp2.image}}" alt="" class="product-thumb"></a>
+                        <h2><a href="single-product.html">{{sp2.name}}</a></h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product-wid-price">
+                            <ins>${{sp2.new_price}}</ins> <del>${{sp2.old_price}}</del>
+                        </div>                            
+                    </div>
+                    <!--<div class="single-wid-product">
+                        <a href="single-product.html"><img src="img/product-thumb-4.jpg" alt="" class="product-thumb"></a>
+                        <h2><a href="single-product.html">Samsung gallaxy note 4</a></h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product-wid-price">
+                            <ins>$400.00</ins> <del>$425.00</del>
+                        </div>                            
+                    </div>
+                    <div class="single-wid-product">
+                        <a href="single-product.html"><img src="img/product-thumb-1.jpg" alt="" class="product-thumb"></a>
+                        <h2><a href="single-product.html">Sony playstation microsoft</a></h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product-wid-price">
+                            <ins>$400.00</ins> <del>$425.00</del>
+                        </div>                            
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

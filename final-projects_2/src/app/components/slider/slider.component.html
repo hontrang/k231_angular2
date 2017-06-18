@@ -1,0 +1,18 @@
+<div class="slider-area">
+        <!-- Slider -->
+        <div class="block-slider block-slider4">
+            <ul class="" id="bxslider-home4">
+                <!--<li>-->
+                <li *ngFor="let item of listSlider">
+                    <img src="img/{{item.image}}" alt="Slide" >
+                    <div class="caption-group">
+                        <h2 class="caption title" [innerHTML]="item.caption_title">                            
+                        </h2>
+                        <h4 class="caption subtitle">{{item.caption_subtitle}}</h4>
+                        <a class="caption button-radius" href="#"><span class="icon"></span>Shop now</a>
+                    </div>
+                </li>                
+            </ul>
+        </div>
+        <!-- ./Slider -->
+</div>

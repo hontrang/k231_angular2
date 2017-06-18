@@ -7,6 +7,6 @@ import { Component, OnInit } from '@angular/core';
 
 export class SingleShopProductComponent implements OnInit {
     constructor() { }
-    listProduct: any = []
+
     ngOnInit() { }
 }

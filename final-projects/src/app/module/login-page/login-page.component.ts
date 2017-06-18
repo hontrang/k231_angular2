@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from "../../services/user.service";
+import {NguoiDung} from "../../models/user.component"
 declare var $: any;
 
 @Component({
@@ -42,19 +43,16 @@ export class LoginPageComponent implements OnInit {
         this._userService.$getEventSubject.subscribe($event => {
             this.UserLogIn = this._userService.getLoggedUser();
         });
-        this._userService.getAPIByHttp().then(data => {
-            this.listUser = data;
-        });
+        // this._userService.getAPIByHttp().then(data => {
+        //     this.listUser = data;
+        // });
     }
     setUserLogin(user: any) {
         this.UserLogIn = user;
     }
-    setProcessLoginStatus(status: boolean) {
-        this.process_login_success = status;
-    }
     btn_log_in(email: any, matkhau: any) {
-        if (email.value == this.user.email) {
-            if (matkhau.value == this.user.matkhau) {
+        if (email.value == this.user.Email) {
+            if (matkhau.value == this.user.MatKhau) {
                 localStorage.setItem("nguoi_dung", JSON.stringify(this.user));
                 // alert("Đăng nhập thành công!");
                 this.login_success = true;
@@ -84,7 +82,7 @@ export class LoginPageComponent implements OnInit {
     }
 
     Upload(){
-        this._userService.createNewUser(this.user).then(data => console.log(data));
+        // this._userService.createNewUser(this.user).then(data => console.log(data));
     }
     ngOnInit() { }
 }

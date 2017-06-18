@@ -9,11 +9,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var refesh_event_service_1 = require("../services/refesh-event.service");
+var rxjs_1 = require("rxjs");
+require("rxjs/add/operator/toPromise");
+var http_1 = require("@angular/http");
 var UserService = (function () {
-    function UserService(serviceInstance) {
-        this.serviceInstance = serviceInstance;
+    function UserService(_http) {
+        this._http = _http;
+        this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         this.isLogged = false;
+        this.loggedUser = undefined;
+        this.eventSubject = new rxjs_1.ReplaySubject(1);
         if (localStorage.getItem("nguoi_dung")) {
             this.setLoggedStatus(true);
         }
@@ -21,16 +26,59 @@ var UserService = (function () {
     UserService.prototype.checkUserLogged = function () {
         return this.isLogged;
     };
+    // getAPIByHttp(): Promise<NguoiDung[]> {
+    //     return this._http.get("http://172.25.55.10:8000/")
+    //         .toPromise()
+    //         .then(data => data.json() as NguoiDung[])
+    //         .catch(this.handleError);
+    // }
+    // createNewUser(user: any): Promise <NguoiDung>{
+    //     return this._http.post("http://172.25.55.10:8000/", JSON.stringify({ name: name }), { headers: this.headers })
+    //         .toPromise()
+    //         .then(res => res.json() as NguoiDung)
+    //         .catch(this.handleError);
+    // }
+    UserService.prototype.handleError = function (error) {
+        console.error('An error occurred', error); // for demo purposes only
+        return Promise.reject(error.message || error);
+    };
     UserService.prototype.setLoggedStatus = function (status) {
-        this.serviceInstance.sendCustomEvent();
-        console.log(status);
+        this.sendCustomEvent();
         this.isLogged = status;
+    };
+    UserService.prototype.setLoggedUser = function (user) {
+        this.loggedUser = user;
+        if (user != undefined) {
+            this.setLoggedStatus(true);
+        }
+        else {
+            this.setLoggedStatus(false);
+        }
+    };
+    UserService.prototype.getLoggedUser = function () {
+        return this.loggedUser;
+    };
+    Object.defineProperty(UserService.prototype, "$getEventSubject", {
+        // set observable of this subject
+        get: function () {
+            return this.eventSubject.asObservable();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    // remove from observer
+    UserService.prototype.resetEventObserver = function () {
+        this.eventSubject = new rxjs_1.ReplaySubject(1);
+    };
+    // send event to observers
+    UserService.prototype.sendCustomEvent = function () {
+        this.eventSubject.next(true);
     };
     return UserService;
 }());
 UserService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [refesh_event_service_1.EventSubscribeService])
+    __metadata("design:paramtypes", [http_1.Http])
 ], UserService);
 exports.UserService = UserService;
 //# sourceMappingURL=user.service.js.map

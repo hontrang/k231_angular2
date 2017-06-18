@@ -20,6 +20,7 @@ export class MaincontentComponent implements OnInit {
             setTimeout(() => {
                 this._productService.get_list_product_with_price("LG").then(data => {
                     this.listProducts = data.slice(0,8);
+                    console.log(this.listProducts);
                     setTimeout(()=>{
                         this.loadJQuery();
                     },50);
@@ -33,6 +34,7 @@ export class MaincontentComponent implements OnInit {
         // productService.get_list_product_with_price("LG").then(data => {
         //     this.listProducts = data;
         // });
+        this._userService.setLoggedUser(undefined);
 
     }
     ngOnInit() {

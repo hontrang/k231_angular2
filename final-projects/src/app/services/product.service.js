@@ -22,20 +22,7 @@ var ProductService = (function () {
         return mock_product_1.ListProduct;
     };
     ProductService.prototype.get_list_product_with_price = function (name) {
-        console.log(this._userService.checkUserLogged());
-        if (this._userService.checkUserLogged()) {
-            return Promise.resolve(mock_product_1.ListProduct);
-        }
-        else {
-            return Promise.resolve(mock_product_1.ListProduct).then(function (data) {
-                return data.filter(function (item) { return item.desc.indexOf(name) > -1; });
-            });
-        }
-    };
-    ProductService.prototype.get_list_productById = function (id) {
-        return Promise.resolve(mock_product_1.ListProduct).then(function (data) {
-            return data.filter(function (item) { return item.id == id; });
-        });
+        return Promise.resolve(mock_product_1.ListProduct);
     };
     ProductService.prototype.get_product_by_id = function (id) {
         return Promise.resolve(mock_product_1.ListProduct).then(function (data) { return data.filter(function (item) { return item.id == id; }); });

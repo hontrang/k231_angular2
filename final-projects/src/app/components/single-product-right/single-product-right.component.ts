@@ -33,12 +33,12 @@ export class SingleProductRightComponent implements OnInit {
 
     ngOnInit() {
 
-        this.route.params
-        .switchMap((params: Params) => this.productservice.get_list_productById(+params['id_san_pham']))
-        .subscribe(product=>{
-            this.productDetail=product[0];
-            console.log(this.productDetail);
-        });
+        // this.route.params
+        // .switchMap((params: Params) => this.productservice.get_list_productById(+params['id_san_pham']))
+        // .subscribe(product=>{
+        //     this.productDetail=product[0];
+        //     console.log(this.productDetail);
+        // });
 
         console.log(this.route.params);
 

@@ -1,25 +1,38 @@
-<form action="" method="POST" role="form" class="form_dang_ky" #form_dang_ky="ngForm">
-    <legend>Đăng ký thành viên</legend>
+<a *ngIf="!UserLogIn" href="#signup-modal" data-toggle="modal">
+                                <i class="glyphicon glyphicon-log-in"></i>&nbsp;&nbsp;Đăng ký</a>
+<ng-template #register_successful>
+            <div>
+                  <span>Tạo tài khoản thành công, vui lòng đăng nhập!</span>
+            </div>
+      </ng-template>
+<div class="modal fade in" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false"
+      style="display: none;">
+      <div class="modal-dialog">
+            <div class="signupmodal-container">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="close_button">×</button>
+                  <form  *ngIf="!isSubmitted; else register_successful" action="" method="POST" role="form" class="form_dang_ky" #form_dang_ky="ngForm" (ngSubmit)="onSubmitRegistration(form_dang_ky)">
+                        <legend>Đăng ký thành viên</legend>
 
-    <div class="form-group">
-        <label for="">Họ tên</label>
-        <input required #ho_ten="ngModel" [(ngModel)]="nguoi_dung.HoTen"   type="text" class="form-control" name="ho_ten" placeholder="Nhập họ tên">
-        
-        <div *ngIf="!ho_ten.valid && ho_ten.dirty" class="panel panel-warning">
-              <!--<div class="panel-heading">
+                        <div class="form-group">
+                              <label for="">Họ tên</label>
+                              <input required #ho_ten="ngModel" [(ngModel)]="nguoi_dung.HoTen" type="text" class="form-control" name="ho_ten" placeholder="Nhập họ tên">
+
+                              <div *ngIf="!ho_ten.valid && ho_ten.dirty" class="panel panel-warning">
+                                    <!--<div class="panel-heading">
                     <h3 class="panel-title">Panel title</h3>
               </div>-->
-              <div class="panel-body">
-                    Vui lòng nhập họ tên
-              </div>
-        </div>
-        
-    </div>
-    <div class="form-group">
-        <label for="">Email</label>
-        <input required pattern="\S+@\S+\.\S+" #email="ngModel" [(ngModel)]="nguoi_dung.Email" type="text" class="form-control" name="email" placeholder="Nhập email">
-          <div *ngIf="!email.valid && email.dirty" class="panel panel-warning">
-              <!--<div class="panel-heading">
+                                    <div class="panel-body">
+                                          Vui lòng nhập họ tên
+                                    </div>
+                              </div>
+
+                        </div>
+                        <div class="form-group">
+                              <label for="">Email</label>
+                              <input required email #email="ngModel" [(ngModel)]="nguoi_dung.Email" type="text" class="form-control" name="email"
+                                    placeholder="Nhập email">
+                              <div *ngIf="!email.valid && email.dirty" class="panel panel-warning">
+                                    <!--<div class="panel-heading">
                     <h3 class="panel-title">Panel title</h3>
               </div>-->
               <div *ngIf="email.errors.pattern"  class="panel-body">
@@ -37,53 +50,54 @@
               <!--<div class="panel-heading">
                     <h3 class="panel-title">Panel title</h3>
               </div>-->
-              <div class="panel-body">
-                    Vui lòng nhập mật khẩu
-              </div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="">Số điện thoại</label>
-        <input required #dien_thoai="ngModel" [(ngModel)]="nguoi_dung.DienThoai" type="text" class="form-control" name="dien_thoai" placeholder="Nhập số điện thoại">
-          <div *ngIf="!dien_thoai.valid && dien_thoai.dirty" class="panel panel-warning">
-              <!--<div class="panel-heading">
+                                    <div class="panel-body">
+                                          Mật khẩu có ít nhất 8 ký tự và phải bao gồm chữ hoa, chữ thường, ký tự đặt biệt
+                                    </div>
+                              </div>
+                        </div>
+                        <div class="form-group">
+                              <label for="">Số điện thoại</label>
+                              <input pattern="^[0-9]+$"
+                                    required #dien_thoai="ngModel" [(ngModel)]="nguoi_dung.DienThoai" type="text" class="form-control" name="dien_thoai"
+                                    placeholder="Nhập số điện thoại">
+                              <div *ngIf="!dien_thoai.valid && dien_thoai.dirty" class="panel panel-warning">
+                                    <!--<div class="panel-heading">
                     <h3 class="panel-title">Panel title</h3>
               </div>-->
-              <div class="panel-body">
-                    Vui lòng nhập họ tên
-              </div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="">Ngày tháng năm sinh</label>
-        <input required #ngay_sinh="ngModel" [(ngModel)]="nguoi_dung.NgaySinh" type="text" class="form-control" name="ngay_sinh" placeholder="Nhập ngày tháng năm sinh">
-          <div *ngIf="!ngay_sinh.valid && ngay_sinh.dirty" class="panel panel-warning">
-              <!--<div class="panel-heading">
+                                    <div class="panel-body">
+                                          Vui lòng nhập số điện thoại của bạn!
+                                    </div>
+                              </div>
+                        </div>
+                        <div class="form-group">
+                              <label for="">Ngày tháng năm sinh</label>
+                              <input required #ngay_sinh="ngModel" [(ngModel)]="nguoi_dung.NgaySinh" type="date" class="form-control" name="ngay_sinh"
+                                    placeholder="Nhập ngày tháng năm sinh">
+                              <div *ngIf="!ngay_sinh.valid && ngay_sinh.dirty" class="panel panel-warning">
+                                    <!--<div class="panel-heading">
                     <h3 class="panel-title">Panel title</h3>
               </div>-->
-              <div class="panel-body">
-                    Vui lòng nhập ngày sinh
-              </div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="">Địa chỉ</label>
-        <input required #dia_chi="ngModel" [(ngModel)]="nguoi_dung.DiaChi" type="text" class="form-control" name="dia_chi" placeholder="Nhập địa chỉ">
-          <div *ngIf="!dia_chi.valid && dia_chi.dirty" class="panel panel-warning">
-              <!--<div class="panel-heading">
+                                    <div class="panel-body">
+                                          Vui lòng nhập ngày sinh
+                                    </div>
+                              </div>
+                        </div>
+                        <div class="form-group">
+                              <label for="">Địa chỉ</label>
+                              <input #dia_chi="ngModel" [(ngModel)]="nguoi_dung.DiaChi" type="text" class="form-control" name="dia_chi" placeholder="Nhập địa chỉ">
+                              <div *ngIf="!dia_chi.valid && dia_chi.dirty" class="panel panel-warning">
+                                    <!--<div class="panel-heading">
                     <h3 class="panel-title">Panel title</h3>
               </div>-->
-              <div class="panel-body">
-                    Vui lòng nhập địa chỉ
-              </div>
-        </div>
-    </div>
- 
+                                    <div class="panel-body">
+                                          Vui lòng nhập địa chỉ
+                                    </div>
+                              </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" [disabled]="!form_dang_ky.form.valid">Đăng ký</button>
+                        <!--<button type="submit" class="btn btn-primary" [disabled]="!form_dang_ky.form.invalid" >Submit</button>-->
+                  </form>
 
-    
-
-    <button type="submit" class="btn btn-primary" [disabled]="!form_dang_ky.form.valid" >Submit</button>
-    <!--<button type="submit" class="btn btn-primary" [disabled]="!form_dang_ky.form.invalid" >Submit</button>-->
-</form>
-
-
+            </div>
+      </div>
+</div>

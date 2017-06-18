@@ -5,7 +5,7 @@
   </div>
   <div class="kqchat" >
     <div class="xuatNd">
-        <div *ngFor="let kt of mangChat">
+        <div *ngFor="let kt of mangChat" class="thongdiep">
         <!--Nội dung bạn chat: {{mess}}-->
         <div class="item_chat {{(kt.people == 1)?'owner':''}}">{{kt.noidung}}</div>
         <div style="clear: both;"></div>
@@ -16,7 +16,7 @@
     <div class="noidungchat" >
      
         <textarea placeholder="Type your message here..."  onfocus="this.placeholder=''" onblur="this.placeholder='Type your messege here...'"  (blur)="thongBaoChat($event)" #ndtn  (keyup.enter)="xuatMess($event)"></textarea>
-         <button style="margin-left: 230px;margin-top:-100px;" class="btn btn-primary" (click)="sendMess(ndtn)">Send</button>
+         <button class="btn btn-primary" (click)="sendMess(ndtn)">Send</button>
     </div>
    
 </div>

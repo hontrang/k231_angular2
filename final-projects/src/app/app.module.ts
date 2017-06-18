@@ -2,10 +2,17 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent }  from './app.component';
-//Routing
-import { routedComponents } from "./routing";
+
 //Form 
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+
+//HTTP
+import { HttpModule } from "@angular/http";
+
+
+//Router
+import { routedComponents } from './routing'
+
 //Templates
 import { HeaderComponent } from "./templates/header/header.component";
 import { MainmenuComponent } from "./templates/mainmenu/mainmenu.component";
@@ -24,26 +31,31 @@ import { ProductBigTitleComponent } from "./components/product-big-title/product
 import { SingleShopProductComponent } from "./components/single-shop-product/single-shop-product.component";
 import {SingleProductLeftComponent} from "./components/single-product-left/single-product-left.component";
 import {SingleProductRightComponent} from "./components/single-product-right/single-product-right.component";
+import { SearchEngineComponent } from "./components/search-engine/search-engine.component";
+import {  BackToTopComponent} from "./components/back-to-top/back-to-top.component";
 
 //Modules
 import { HomeContentComponent } from "./module/home-page/home-content.component";
 import { SignUpComponent } from "./module/sign-up-page/sign-up.component";
-import {LoginPageComponent} from "./module/login-page/login-page.component";
+import { LoginPageComponent } from "./module/login-page/login-page.component";
 import { SingleShopProductContentComponent } from "./module/single-shop-product-page/single-shop-product-content.component";
 import { SingleProductContentComponent } from "./module/single-product-page/single-product-content.component";
 //Service
 import {UserService} from "./services/user.service";
 import { ProductService } from "./services/product.service";
 import {SingleProductLeftService } from "./services/single-product-left.service";
-  import {EventSubscribeService} from "./services/refesh-event.service"
+import {CartService} from "./services/cart.service"
+
+
 @NgModule({
-  imports:      [ BrowserModule,FormsModule,routedComponents ],
-  declarations: [ AppComponent, HeaderComponent, MainmenuComponent, SiteBrandingComponent, FooterTopComponent, FooterBottomComponent,
-                  BrandsComponent, MaincontentComponent, ProductWidgetComponent, PromoComponent, SliderComponent,
-                  ProductBigTitleComponent, SingleShopProductComponent,LoginPageComponent,
-                  HomeContentComponent, SingleShopProductContentComponent,ChatComponent,SignUpComponent,SingleProductLeftComponent,SingleProductRightComponent,
-                  SingleProductContentComponent, ],
-  providers: [ProductService,SingleProductLeftService,UserService,EventSubscribeService],
-  bootstrap:    [ AppComponent ]
+  imports: [BrowserModule, FormsModule, routedComponents,HttpModule],
+  declarations: [AppComponent, HeaderComponent, MainmenuComponent, SiteBrandingComponent, FooterTopComponent, FooterBottomComponent,
+    BrandsComponent, MaincontentComponent, ProductWidgetComponent, PromoComponent, SliderComponent,
+    ProductBigTitleComponent, SingleShopProductComponent,
+    HomeContentComponent, SingleShopProductContentComponent, ChatComponent, SignUpComponent, SingleProductLeftComponent,SingleProductRightComponent,
+    SingleProductContentComponent, 
+    LoginPageComponent,SearchEngineComponent,BackToTopComponent],
+  bootstrap: [AppComponent],
+  providers: [ProductService, SingleProductLeftService,UserService, CartService]
 })
 export class AppModule { }

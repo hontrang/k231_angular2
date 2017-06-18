@@ -4,27 +4,32 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="latest-product">
-                    <h2 class="section-title">Latest Products</h2>
-                    <div class="product-carousel">
-                        <div *ngFor="let item of listProducts" class="single-product">
+                    <div class="section-title">Sản phẩm mới</div>
+                    <div>
+                        <a class="wid-view-more">Xem thêm</a>
+                    </div>
+                    <div class="row">
+                        <div *ngFor="let item of listProducts" class="single-product col-md-3">
                             <div class="product-f-image">
                                 <img src="img/{{item.image}}" alt="">
                                 <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link" (click)="AddToCart(item.id)"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a  [routerLink]="['single-product-right',item.id]"   class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                    <a class="add-to-cart-link" (click)="AddToCart(item)"><i class="fa fa-shopping-cart"></i>Thêm</a>
+                                    <a class="view-details-link" [routerLink]="['product-detail', item.id]"><i class="fa fa-link"></i>Xem chi tiết</a>
                                 </div>
                             </div>
-                             <h2><a href="single-product.html">{{item.desc}}</a></h2>
-                            
-                            <div class="product-carousel-price" *ngIf="item.old_price > 0">
-                                <ins>${{item.new_price}}</ins> <del>${{item.old_price}}</del>
-                            </div> 
+                            <div class="product-desc">
+                                <h2><a href="#">{{item.desc}}</a></h2>
 
-                            <div class="product-carousel-price" *ngIf="item.old_price == 0">
-                                <ins>${{item.new_price}}</ins>
-                            </div> 
-                           
-                        </div>                        
+                                <div class="product-carousel-price" *ngIf="item.old_price > 0">
+                                    <ins>{{item.new_price}} VND</ins><br>
+                                    <del>{{item.old_price}} VND</del>
+                                </div>
+
+                                <div class="product-carousel-price" *ngIf="item.old_price == 0">
+                                    <ins>{{item.new_price}} VND</ins>                
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

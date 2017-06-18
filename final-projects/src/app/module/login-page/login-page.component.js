@@ -10,8 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var user_service_1 = require("../../services/user.service");
+var user_component_1 = require("../../models/user.component");
 var LoginPageComponent = (function () {
     function LoginPageComponent(_userService) {
+        var _this = this;
         this._userService = _userService;
         this.listSetting = [
             {
@@ -33,27 +35,41 @@ var LoginPageComponent = (function () {
                 ]
             }
         ];
-        this.login_success = false;
+        this.process_login_success = false;
         this.isForgotPw = false;
-        this.user = {
-            email: "team02@gmail.com",
-            matkhau: "123456"
-        };
+        this.user = new user_component_1.NguoiDung("team02", "team02@gmail.com", "123456", "01/01/2000", "123456789", "12345 abc");
+        this.listUser = [];
         var chuoi_nguoi_dung = localStorage.getItem("nguoi_dung");
         if (chuoi_nguoi_dung != "" && chuoi_nguoi_dung != null) {
             this.UserLogIn = JSON.parse(chuoi_nguoi_dung);
-            this._userService.setLoggedStatus(true);
+            this._userService.setLoggedUser(this.UserLogIn);
         }
+        else {
+            this._userService.setLoggedUser(undefined);
+        }
+        this._userService.$getEventSubject.subscribe(function ($event) {
+            _this.UserLogIn = _this._userService.getLoggedUser();
+        });
+        this._userService.getAPIByHttp().then(function (data) {
+            _this.listUser = data;
+        });
     }
+    LoginPageComponent.prototype.setUserLogin = function (user) {
+        this.UserLogIn = user;
+    };
+    LoginPageComponent.prototype.setProcessLoginStatus = function (status) {
+        this.process_login_success = status;
+    };
     LoginPageComponent.prototype.btn_log_in = function (email, matkhau) {
-        if (email.value == this.user.email) {
-            if (matkhau.value == this.user.matkhau) {
+        if (email.value == this.user.Email) {
+            if (matkhau.value == this.user.MatKhau) {
+                // this.setUserLogin(this.user);
                 localStorage.setItem("nguoi_dung", JSON.stringify(this.user));
-                // alert("Đăng nhập thành công!");
-                this.login_success = true;
-                $("#login-modal").modal("hide");
-                this._userService.setLoggedStatus(true);
-                this.UserLogIn = localStorage.getItem('nguoi_dung');
+                this.setProcessLoginStatus(true);
+                this._userService.setLoggedUser(this.user);
+                setTimeout(function () {
+                    $("#login-modal").modal("hide");
+                }, 1000);
             }
             else {
                 alert("Mật khẩu không chính xác");
@@ -68,11 +84,14 @@ var LoginPageComponent = (function () {
     };
     LoginPageComponent.prototype.logout = function () {
         localStorage.removeItem("nguoi_dung");
-        this._userService.setLoggedStatus(false);
-        // this.reload();
+        this._userService.setLoggedUser(undefined);
+        this.setProcessLoginStatus(false);
     };
     LoginPageComponent.prototype.forgotPasswd = function () {
         this.isForgotPw = true;
+    };
+    LoginPageComponent.prototype.Upload = function () {
+        this._userService.createNewUser(this.user).then(function (data) { return console.log(data); });
     };
     LoginPageComponent.prototype.ngOnInit = function () { };
     return LoginPageComponent;

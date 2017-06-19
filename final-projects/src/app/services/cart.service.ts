@@ -23,7 +23,7 @@ export class CartService {
                 break;
         }
         this.setNewItem(product);
-        console.log(this.cartList);
+        // console.log(this.cartList);
     }
     setNewItem(item: Product) {
         this.newItem = item;
@@ -36,7 +36,7 @@ export class CartService {
     }
     removeProduct(product: Product) {
         this.cartList.forEach((item, index) => {
-            if (item.id == product.id) {
+            if (item.don_gia == product.don_gia) {
                 this.cartList.splice(index, 1);
             }
         });

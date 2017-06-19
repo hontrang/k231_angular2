@@ -1,45 +1,43 @@
 import { Component, OnInit } from '@angular/core';
-import {Product} from "../../models/product";
-import { ProductService} from "../../services/product.service";
-import { UserService} from "../../services/user.service";
-import { CartService} from "../../services/cart.service";
+import { Product } from "../../models/product";
+import { ProductService } from "../../services/product.service";
+import { UserService } from "../../services/user.service";
+import { CartService } from "../../services/cart.service";
 declare var $: any;
 
 @Component({
-    selector: 'top-seller',
-    templateUrl: './top-seller-product.component.html'
+    selector: 'top-viewed',
+    templateUrl: './top-viewed-product.component.html'
 })
 
-export class TopSellerComponent implements OnInit {
+export class TopViewedComponent implements OnInit {
     listGioHang: any[] = [];
     listProducts: any[] = [];
-    listFromAPI: Product[] =[];
+    listFromAPI: Product[] = [];
     constructor(private _productService: ProductService, private _userService: UserService, private _cartService: CartService) {
         this._userService.$getEventSubject.subscribe(event => {
             //wait for user log changed
-            setTimeout(() => {
-                this._productService.get_list_product_with_price("LG").then(data => {
-                    this.listProducts = data.slice(0,8);
-                    console.log(this.listProducts);
-                    setTimeout(()=>{
-                        this.loadJQuery();
-                    },50);
-                });
-            }, 50)
+            // setTimeout(() => {
+            //     this._productService.getListProductFromPublicAPI().then(data => {
+            //         this.listProducts = data.slice(0,8);
+            //         console.log(this.listProducts);
+            //         setTimeout(()=>{
+            //             this.loadJQuery();
+            //         },50);
+            //     });
+            // }, 50);
+            this._productService.getListProductFromPublicAPI().subscribe(data => {
+                this.listProducts =  data.sort((a,b) => {
+                    return  a.so_lan_xem - b.so_lan_xem;
+                }).slice(data.length-8,data.length).reverse();
+            });
         });
-        this._productService.getListProductFromPublicAPI().subscribe(data => {
-            this.listFromAPI = data;
-            console.log(this.listFromAPI)
-        });
-        // productService.get_list_product_with_price("LG").then(data => {
-        //     this.listProducts = data;
-        // });
         this._userService.setLoggedUser(undefined);
 
     }
     ngOnInit() {
         this._userService.$getEventSubject.subscribe(event => {
-            
+
         });
         let chuoi_ds_gio_hang = localStorage.getItem("gio_hang");
 
@@ -48,8 +46,8 @@ export class TopSellerComponent implements OnInit {
         }
     }
 
-    showDetail(){
-    
+    showDetail() {
+
     }
     loadJQuery() {
         // jQuery sticky Menu
@@ -139,8 +137,8 @@ export class TopSellerComponent implements OnInit {
     }
 
     AddToCart(item: Product) {
-        this._cartService.cartChange('add',item);
-        
+        this._cartService.cartChange('add', item);
+
         // this.listProducts.forEach((san_pham) => {
         //     if (san_pham.id == id_sp) {
 

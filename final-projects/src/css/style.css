@@ -167,6 +167,7 @@ z-index: 999;}
 .stylish-input-group button{
     border:0;
     background:transparent;
+    padding: 0px!important;
 }
 .imaginary_container{
     margin-top: 55px;
@@ -438,12 +439,19 @@ padding-right: 20px;
     overflow: hidden;
 }
 .single-product img{
-    margin: auto;
+    margin: 0 auto;
     display: block
 }
 .product-desc{
     display: block;
     height: 80px;
+}
+.product-desc h2{
+    height: 60%;
+    overflow: hidden;
+}
+.product-desc .product-carousel-price{
+    height: 40%;
 }
 .latest-product .wid-view-more{
     margin-top: 15px;
@@ -598,7 +606,7 @@ padding-right: 20px;
     color: #fff;
     padding: 3px 15px;
     position: absolute;
-    right: 10px;
+    right: 15px;
     top: 3px;
 }
 .wid-view-more:hover {color: #fff;background-color: #222;text-decoration: none}

@@ -33,7 +33,7 @@ import {SingleProductLeftComponent} from "./components/single-product-left/singl
 import {SingleProductRightComponent} from "./components/single-product-right/single-product-right.component";
 import { SearchEngineComponent } from "./components/search-engine/search-engine.component";
 import {  BackToTopComponent} from "./components/back-to-top/back-to-top.component";
-import { TopSellerComponent } from "./components/top-seller-product/top-seller-product.component";
+import { TopViewedComponent } from "./components/top-viewed-product/top-viewed-product.component";
 
 //Modules
 import { HomeContentComponent } from "./module/home-page/home-content.component";
@@ -55,7 +55,7 @@ import {CartService} from "./services/cart.service"
     ProductBigTitleComponent, SingleShopProductComponent,
     HomeContentComponent, SingleShopProductContentComponent, ChatComponent, SignUpComponent, SingleProductLeftComponent,SingleProductRightComponent,
     SingleProductContentComponent, 
-    LoginPageComponent,SearchEngineComponent,BackToTopComponent,TopSellerComponent],
+    LoginPageComponent,SearchEngineComponent,BackToTopComponent,TopViewedComponent],
   bootstrap: [AppComponent],
   providers: [ProductService, SingleProductLeftService,UserService, CartService]
 })

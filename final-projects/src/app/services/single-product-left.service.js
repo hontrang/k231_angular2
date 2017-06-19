@@ -9,13 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var mock_single_product_left_1 = require("../models/mock_single_product_left");
 //import { UserService } from "../services/user.service";
 var SingleProductLeftService = (function () {
     function SingleProductLeftService() {
     }
     SingleProductLeftService.prototype.get_list_single_product_left = function () {
-        return mock_single_product_left_1.ListSingleProductLeft;
+        return [{}];
     };
     return SingleProductLeftService;
 }());

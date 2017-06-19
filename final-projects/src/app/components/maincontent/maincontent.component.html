@@ -11,22 +11,17 @@
                     <div class="row">
                         <div *ngFor="let item of listProducts" class="single-product col-md-3">
                             <div class="product-f-image">
-                                <img src="img/{{item.image}}" alt="">
+                                <img src="/images/san_pham/{{item.hinh_san_pham}}" alt="">
                                 <div class="product-hover">
                                     <a class="add-to-cart-link" (click)="AddToCart(item)"><i class="fa fa-shopping-cart"></i>Thêm</a>
-                                    <a class="view-details-link" [routerLink]="['product-detail', item.id]"><i class="fa fa-link"></i>Xem chi tiết</a>
+                                    <a class="view-details-link" [routerLink]="['single-product-right', item.ma]"><i class="fa fa-link"></i>Xem chi tiết</a>
                                 </div>
                             </div>
                             <div class="product-desc">
-                                <h2><a href="#">{{item.desc}}</a></h2>
+                                <h2><a [routerLink]="['single-product-right', item.ma]">{{item.ten_san_pham}}</a></h2>
 
-                                <div class="product-carousel-price" *ngIf="item.old_price > 0">
-                                    <ins>{{item.new_price}} VND</ins><br>
-                                    <del>{{item.old_price}} VND</del>
-                                </div>
-
-                                <div class="product-carousel-price" *ngIf="item.old_price == 0">
-                                    <ins>{{item.new_price}} VND</ins>                
+                                <div class="product-carousel-price">
+                                    <ins>{{item.don_gia | currency:'VND':true}}</ins>                
                                 </div>
                             </div>
                         </div>

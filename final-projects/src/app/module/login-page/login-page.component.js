@@ -92,7 +92,8 @@ var LoginPageComponent = (function () {
 LoginPageComponent = __decorate([
     core_1.Component({
         selector: 'log-in',
-        templateUrl: './login-page.component.html'
+        templateUrl: './login-page.component.html',
+        styleUrls: ['./login-page.css']
     }),
     __metadata("design:paramtypes", [user_service_1.UserService])
 ], LoginPageComponent);

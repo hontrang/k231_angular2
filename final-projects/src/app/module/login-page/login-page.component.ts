@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from "../../services/user.service";
-import {NguoiDung} from "../../models/user.component"
+import {NguoiDung} from "../../models/user.component";
+import {FormsModule} from "@angular/forms";
+
 declare var $: any;
 
 @Component({
     selector: 'log-in',
-    templateUrl: './login-page.component.html'
+    templateUrl: './login-page.component.html',
+      styleUrls:['./login-page.css']   
 })
 
 export class LoginPageComponent implements OnInit {
@@ -32,7 +35,7 @@ export class LoginPageComponent implements OnInit {
     UserLogIn: any;
     login_success = false;
     isForgotPw = false;
-    user = new NguoiDung("team02", "team02@gmail.com", "123456", "01/01/2000", "123456789", "12345 abc");
+    user = new NguoiDung("team02","team02@gmail.com", "123456", "01/01/2000", "123456789", "12345 abc");
     listUser: NguoiDung[] = [];
     constructor(private _userService: UserService) {
         let chuoi_nguoi_dung = localStorage.getItem("nguoi_dung");

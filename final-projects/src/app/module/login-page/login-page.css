@@ -1,0 +1,26 @@
+#form_dang_nhap{
+    margin-left:20px;
+    margin-right: 20px;
+    margin-top:10px;
+}
+#form_dang_nhap input{
+    height: 30px;
+}
+
+#form_dang_nhap input.ng-valid{
+    border-left: 5px solid blue;
+}
+#form_dang_nhap input.ng-invalid{
+    border-left: 5px solid red;
+}
+#form_dang_nhap input.ng-pristine{
+    border-left: 5px solid gray;
+}
+.panel-body{
+    color:red;
+    padding: 0;
+    border:0;
+}
+#btn-login{
+    padding-bottom: 40px;
+}

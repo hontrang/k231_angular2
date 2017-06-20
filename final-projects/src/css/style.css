@@ -1206,10 +1206,16 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
 .nd{
     position: fixed;
     bottom: 0;
-    right:20px;
+    right: 70px;
     width: 300px;
     z-index: 999;
-
+    bottom: 30px;
+}
+.nd .comment-icon{
+    float: right;
+}
+.main-form-chat{
+    display: none;
 }
 .tieudechat{
     background: dodgerblue;
@@ -1237,8 +1243,7 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
 }
 .noidungchat>textarea{
     background: white;
-     border: 1px solid blue;
-     width: 70%;
+    width: 70%;
 }
 .noidungchat button{
     width: 30%;

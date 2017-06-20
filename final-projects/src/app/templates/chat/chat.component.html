@@ -1,22 +1,28 @@
 <div class="nd">
-  <div class="tieudechat" >
-       -- Chat online with us --
-      <span (click)=MinimizeChat($event) style="position:absolute;right:5px;top:10px;" class="glyphicon glyphicon-minus-sign"></span>
-  </div>
-  <div class="kqchat" >
-    <div class="xuatNd">
-        <div *ngFor="let kt of mangChat" class="thongdiep">
-        <!--Nội dung bạn chat: {{mess}}-->
-        <div class="item_chat {{(kt.people == 1)?'owner':''}}">{{kt.noidung}}</div>
-        <div style="clear: both;"></div>
+    <div class="main-form-chat">
+        <div class="tieudechat">
+            -- Chat online with us --
+            <span (click)=ToggleChat($event) style="position:absolute;right:5px;top:10px;" class="glyphicon glyphicon-minus-sign"></span>
+        </div>
+        <div class="kqchat">
+            <div class="xuatNd">
+                <div *ngFor="let kt of mangChat" class="thongdiep">
+                    <!--Nội dung bạn chat: {{mess}}-->
+                    <div class="item_chat {{(kt.people == 1)?'owner':''}}">{{kt.noidung}}</div>
+                    <div style="clear: both;"></div>
+                </div>
+            </div>
+
+        </div>
+        <div class="noidungchat">
+
+            <textarea placeholder="Type your message here..." onfocus="this.placeholder=''" onblur="this.placeholder='Type your messege here...'"
+                (blur)="thongBaoChat($event)" #ndtn (keyup.enter)="xuatMess($event)"></textarea>
+            <button class="btn btn-primary" (click)="sendMess(ndtn)">Send</button>
         </div>
     </div>
-    
-  </div>
-    <div class="noidungchat" >
-     
-        <textarea placeholder="Type your message here..."  onfocus="this.placeholder=''" onblur="this.placeholder='Type your messege here...'"  (blur)="thongBaoChat($event)" #ndtn  (keyup.enter)="xuatMess($event)"></textarea>
-         <button class="btn btn-primary" (click)="sendMess(ndtn)">Send</button>
+    <div class="comment-icon">
+        <button type="button" class="btn btn-primary" (click)="ToggleChat($event)"><i class="fa fa-comments-o" aria-hidden="true"></i></button>
     </div>
-   
+
 </div>

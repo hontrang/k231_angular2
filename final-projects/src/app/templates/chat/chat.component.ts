@@ -67,9 +67,11 @@ export class ChatComponent implements OnInit {
     //     openChat.show();
    
     // }
-    MinimizeChat(event:any)
+    ToggleChat(event:any)
     {
-        var closeChat=$('.kqchat,.noidungchat');
+        var closeChat=$('.main-form-chat');
+        var comment_icon = $('.comment-icon');
+            comment_icon.toggle();
         closeChat.toggle();
     }
 }

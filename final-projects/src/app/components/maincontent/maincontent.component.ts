@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ShoppingCartService } from "../../services/shoppingCart.service";
+import { ShoppingCart } from "../../models/shoppingCart.component";
 declare var jQuery: any;
 declare var $: any;
 
@@ -10,7 +12,10 @@ declare var $: any;
 
 export class MaincontentComponent implements OnInit {
     listGioHang:any[]=[];
-    constructor() { }
+    isShowAlert:boolean = false;
+    constructor(private shoppingCartService:ShoppingCartService) { 
+        
+    }
 
     ngOnInit() {
          setTimeout(() => {
@@ -156,76 +161,12 @@ export class MaincontentComponent implements OnInit {
         })
     }
 
-    AddToCart(id_sp:any)
-    {
-        this.listProducts.forEach((san_pham)=>{
-            if(san_pham.id==id_sp){
-                
-                    if(this.listGioHang.length>0){
-                        let check=0;
-                        this.listGioHang.forEach(san_pham_gio_hang=>{
-                            if(san_pham_gio_hang.id===id_sp){
-                                san_pham_gio_hang.soluong+=1;
-                                check=1;
-                            }
-
-                        });
-                            if(check==0){
-                                san_pham.soluong=1;
-                                this.listGioHang.push(san_pham);
-                            }
-                    }
-                    else{
-                        san_pham.soluong=1;
-                        this.listGioHang.push(san_pham);
-                    }
-                
-            }
-        });
-        let soluongsp = 0;
-        let tongtien = 0;
-        this.listGioHang.forEach((sp_gio_hang) => {
-            soluongsp += sp_gio_hang.soluong * 1;
-            tongtien +=sp_gio_hang.soluong * sp_gio_hang.new_price;
-        });
-       localStorage.setItem("gio_hang", JSON.stringify(this.listGioHang));
-        $(".product-count").html(soluongsp);
-        $(".cart-amunt").html('$'+tongtien);
-    //    AddToCart(sp:any){
-
-    //     if(this.listProducts.length>0)
-    //     {
-    //         let kiemtra:boolean = true;
-    //          this.listProducts.forEach((item)=>{
-                 
-    //              if(item.id == sp.id)
-    //              {
-    //                    item.so_luong += 1; 
-    //                    kiemtra = false;              
-    //              }
-    //          });
-
-    //          if(kiemtra){
-    //                   sp.so_luong = 1;
-    //                     this.listProducts.push(sp);
-    //              }
-    //     }
-    //     else {
-    //         sp.so_luong = 1;                            
-    //         this.listProducts.push(sp);
-    //         //console.log(this.list_product) ;   
-    //     }
-    //     let soLuongTong=0;
-    //     let thanhTien=0;
-    //     this.listProducts.forEach((item)=>{
-    //     soLuongTong += item.so_luong*1;
-    //     thanhTien += item.don_gia * item.so_luong;
-    //     });
-
-    //     $(".product-count").html(soLuongTong);
-    //     $(".cart-amunt").html(thanhTien);
-      //  console.log( this.list_product);
-      
-        }
+    AddToCart(item:any){
+        let result:number =  this.shoppingCartService.addToShoopingCart(new ShoppingCart("SC" + Math.round(Math.random()*100000), "guest123", item.id, item.desc, item.image, item.new_price*1, 1));
+        this.isShowAlert = true;
+        setTimeout(()=>{
+            this.isShowAlert = false;
+        },2000)
+    }
     
 }

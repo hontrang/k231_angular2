@@ -10,7 +10,7 @@
                             <div class="product-f-image">
                                 <img src="img/{{item.image}}" alt="">
                                 <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link" (click)="AddToCart(item.id)"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                    <a class="add-to-cart-link" (click)="AddToCart(item)"><i class="fa fa-shopping-cart"></i> Add to cart</a>
                                     <a  [routerLink]="['single-product-right',item.id]"   class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                 </div>
                             </div>
@@ -30,4 +30,9 @@
             </div>
         </div>
     </div>
+</div>
+
+<div *ngIf="isShowAlert" class="alert alert-success fade in custom-alert">
+    <a href="#" class="close" data-dismiss="alert">&times;</a>
+    <strong>Success!</strong> Your <a class="alert-link">shopping carts</a> has been update successfully.
 </div>

@@ -1138,6 +1138,7 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
     width: 300px;
     color:white;
     padding :10px;
+    cursor: pointer;
 }
 .kqchat{
     background: white;
@@ -1275,4 +1276,13 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
 a.active-routing{
     background-color: #769cd3!important;
     color: white!important;
+}
+
+.custom-alert{
+    position: fixed;
+    width: 40%;
+    bottom: 0px;
+    z-index: 9999;
+    left: 30%;
+    text-align: center;
 }

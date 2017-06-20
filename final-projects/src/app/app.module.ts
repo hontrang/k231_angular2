@@ -31,19 +31,23 @@ import { SignUpComponent } from "./module/sign-up-page/sign-up.component";
 import {LoginPageComponent} from "./module/login-page/login-page.component";
 import { SingleShopProductContentComponent } from "./module/single-shop-product-page/single-shop-product-content.component";
 import { SingleProductContentComponent } from "./module/single-product-page/single-product-content.component";
-//Service
+import { ShoppingCartContentComponent } from "./module/shopping-cart-page/shopping-cart-page.component";
+
+//Services
 import {UserService} from "./services/user.service";
 import { ProductService } from "./services/product.service";
 import {SingleProductLeftService } from "./services/single-product-left.service";
-  import {EventSubscribeService} from "./services/refesh-event.service"
+import {EventSubscribeService} from "./services/refesh-event.service";
+import { ShoppingCartService } from "./services/shoppingCart.service";
+
 @NgModule({
   imports:      [ BrowserModule,FormsModule,routedComponents ],
   declarations: [ AppComponent, HeaderComponent, MainmenuComponent, SiteBrandingComponent, FooterTopComponent, FooterBottomComponent,
                   BrandsComponent, MaincontentComponent, ProductWidgetComponent, PromoComponent, SliderComponent,
                   ProductBigTitleComponent, SingleShopProductComponent,LoginPageComponent,
                   HomeContentComponent, SingleShopProductContentComponent,ChatComponent,SignUpComponent,SingleProductLeftComponent,SingleProductRightComponent,
-                  SingleProductContentComponent, ],
-  providers: [ProductService,SingleProductLeftService,UserService,EventSubscribeService],
+                  SingleProductContentComponent, ShoppingCartContentComponent],
+  providers: [ProductService,SingleProductLeftService,UserService,EventSubscribeService, ShoppingCartService],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

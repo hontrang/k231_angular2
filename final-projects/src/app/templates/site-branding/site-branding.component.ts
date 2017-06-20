@@ -22,8 +22,6 @@ export class SiteBrandingComponent implements OnInit {
             setTimeout(() => {
                 this.tong_so_luong = this._cartService.countCartList();
                 let new_item_price = this._cartService.getNewItem();
-                console.log(this.tong_tien)
-                console.log(new_item_price.don_gia);
                 //used expression += or + got failed, unknown reason ????
                 this.tong_tien = this.tong_tien  + Number(new_item_price.don_gia);
             }, 100)

@@ -13,6 +13,9 @@
     margin: 0 auto 15px;
 }
 a:focus { outline: 0px solid }
+a:hover{
+    cursor: pointer;
+}
 img {
     max-width: 100%;
     height: auto;
@@ -415,15 +418,20 @@ padding-right: 20px;
 .promo2 { background:#ffd900;}
 .promo3 { background:#fa8072;}
 .promo4 { background:#4abebd;}
-.section-title {
+.section-title span{
     font-family: sans-serif;
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 100;
-    margin-bottom: 15px;
     text-align: left;
-    color: #5A88CA;
+    background: #5A88CA;
+    color: #fff;
+    padding: 5px;
+    overflow: hidden;
+    width: 30%;
 }
-
+.section-title{
+    margin-bottom: 10px;
+}
 
 .product-f-image {
     position: relative;
@@ -452,9 +460,6 @@ padding-right: 20px;
 }
 .product-desc .product-carousel-price{
     height: 40%;
-}
-.latest-product .wid-view-more{
-    margin-top: 15px;
 }
 .product-hover:after {
   background: none repeat scroll 0 0 #000;
@@ -486,10 +491,14 @@ padding-right: 20px;
   text-decoration: none;border-color: #444;
 }
 .product-carousel-price ins {
-  color: #5a88ca;
-  font-weight: 700;
-  margin-right: 5px;
-  text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    margin-right: 5px;
+    padding-left: 10px; 
+    font-size: 15px;
+    text-decoration: none;
+    display: block;
+    background: #5a88ca;
 }
 .product-hover a i.fa {
     margin-right: 5px;
@@ -609,7 +618,15 @@ padding-right: 20px;
     right: 15px;
     top: 3px;
 }
-.wid-view-more:hover {color: #fff;background-color: #222;text-decoration: none}
+.single-product-area-view-more{
+    text-align: center;
+}
+.single-product-area-view-more button{
+    background: none repeat scroll 0 0 #5a88ca;
+    color: #fff;
+    padding: 3px 15px;
+}
+.wid-view-more:hover,.single-product-area-view-more button:hover {color: #fff;background-color: #222;text-decoration: none}
 .single-product-widget {
     position: relative;
 }
@@ -1395,4 +1412,5 @@ a.active-routing{
 .brands-area{
     position:  relative;
 }
+
 

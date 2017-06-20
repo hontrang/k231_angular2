@@ -4,10 +4,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="top-viewed-product">
-                    <div class="section-title">Sản phẩm được xem nhiều nhất</div>
-                    <div>
-                        <a class="wid-view-more">Xem thêm</a>
-                    </div>
+                    <div class="section-title"><span>Sản phẩm được xem nhiều nhất</span>
+                        <a class="wid-view-more" [routerLink]="['single-shop-product-content','san-pham-xem-nhieu']">Xem thêm</a></div>
                     <div class="row">
                         <div *ngFor="let item of listProducts" class="single-product col-md-3">
                             <div class="product-f-image">

@@ -20,6 +20,9 @@ var ProductService = (function () {
     ProductService.prototype.getListProductFromPublicAPI = function () {
         return this._http.get("http://dev-er.com/service_api_ban_hang_dien_tu/api_service_san_pham.php").map(function (response) { return response.json(); });
     };
+    ProductService.prototype.getListProductFromPublicAPIById = function (id) {
+        return this._http.get("http://dev-er.com/service_api_ban_hang_dien_tu/api_service_san_pham.php").map(function (response) { return response.json(); });
+    };
     return ProductService;
 }());
 ProductService = __decorate([

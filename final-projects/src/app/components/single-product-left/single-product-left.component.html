@@ -6,19 +6,16 @@
             <input type="submit"  value="Search">
         </form>
     </div>-->
-    
+
     <div class="single-sidebar">
         <h2 class="sidebar-title">Products</h2>
         <div *ngFor="let sp of listSingleProductLeft" class="thubmnail-recent">
-            <img src="img/{{sp.image}}" class="recent-thumb" alt="">
-            <h2><a href="">{{sp.desc}}</a></h2>
-            <div *ngIf="sp.old_price>0" class="product-sidebar-price">
-                <ins>${{sp.new_price}}</ins> <del>${{sp.old_price}}</del>
-            </div>                             
-             <div *ngIf="sp.old_price==''" class="product-sidebar-price">
-                <ins>${{sp.new_price}}</ins> <del></del>
-            </div>                             
-         
+            <img src="images/san_pham/{{sp.hinh_san_pham}}" class="recent-thumb" alt="">
+            <h2><a href="">{{sp.mo_ta_tom_tat}}</a></h2>
+            <div class="product-sidebar-price">
+                <ins>{{sp.don_gia | currency:"VND":true}}</ins>
+            </div>
+
         </div>
         <!--<div class="thubmnail-recent">
             <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">

@@ -15,7 +15,10 @@ export class ProductService {
 
     }
 
-    getListProductFromPublicAPI(): Observable <Product[]>{
+    getListProductFromPublicAPI(): Observable<Product[]> {
+        return this._http.get("http://dev-er.com/service_api_ban_hang_dien_tu/api_service_san_pham.php").map(response => response.json() as Product[]);
+    }
+    getListProductFromPublicAPIById(id: number): Observable<Product[]> {
         return this._http.get("http://dev-er.com/service_api_ban_hang_dien_tu/api_service_san_pham.php").map(response => response.json() as Product[]);
     }
 

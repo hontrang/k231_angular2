@@ -4,9 +4,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="latest-product">
-                    <div class="section-title">Sản phẩm mới</div>
-                    <div>
-                        <a class="wid-view-more">Xem thêm</a>
+                    <div class="section-title"><span>Sản phẩm mới</span>
+                        <a class="wid-view-more" [routerLink]="['single-shop-product-content','san-pham-moi']">Xem thêm</a>
                     </div>
                     <div class="row">
                         <div *ngFor="let item of listProducts" class="single-product col-md-3">
@@ -21,7 +20,7 @@
                                 <h2><a [routerLink]="['single-product-right', item.ma]">{{item.ten_san_pham}}</a></h2>
 
                                 <div class="product-carousel-price">
-                                    <ins>{{item.don_gia | currency:'VND':true}}</ins>                
+                                    <ins>{{item.don_gia | currency:'VND':true}}</ins>
                                 </div>
                             </div>
                         </div>

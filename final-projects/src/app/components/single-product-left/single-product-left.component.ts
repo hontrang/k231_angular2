@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../models/product';
-import { SingleProductLeftService } from "../../services/single-product-left.service";
+import { ProductService } from "../../services/product.service";
 //import {ListSingleProductLeft} from '../../models/mock_single_product_left';
 declare var $:any;
 @Component({
@@ -10,8 +10,8 @@ declare var $:any;
 
 export class SingleProductLeftComponent implements OnInit {
     //Sử dụng service
-    constructor(private list_Single_Product_Left:SingleProductLeftService) { 
-        this.listSingleProductLeft=list_Single_Product_Left.get_list_single_product_left();
+    constructor(private _productService:ProductService) { 
+        this._productService.getListProductFromPublicAPI().subscribe(data => this.listSingleProductLeft = data.slice(0,8));
     }
     //Sử dụng mock
     // constructor(){
@@ -20,8 +20,7 @@ export class SingleProductLeftComponent implements OnInit {
     ngOnInit() { }
     //Khai báo listProduct trang SinglePage
       
-    listSingleProductLeft:any[]=[
-    ];
+    listSingleProductLeft:any[]=[];
   
     list_hien_thi:any[] = [];
 

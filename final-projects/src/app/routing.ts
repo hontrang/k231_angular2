@@ -11,7 +11,7 @@ import {SingleProductRightComponent} from "./components/single-product-right/sin
 
 const routes: Routes = [
   { path: '', component: HomeContentComponent },
-  { path: 'single-shop-product-content', component: SingleShopProductContentComponent },
+  { path: 'single-shop-product-content/:key', component: SingleShopProductContentComponent },
   { path: 'single-product-content', component:SingleProductContentComponent},
   { path: 'single-product-right/:id_san_pham',component:SingleProductRightComponent}
 ];

@@ -166,7 +166,7 @@ export class MaincontentComponent implements OnInit {
         this.isShowAlert = true;
         setTimeout(()=>{
             this.isShowAlert = false;
-        },2000)
+        },3000)
     }
     
 }

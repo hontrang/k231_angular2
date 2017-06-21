@@ -4,7 +4,7 @@
             <div class="col-md-8">
                 <div class="user-menu">
                     <ul>
-                        <li><a href="#"><i class="fa fa-user"></i>Giỏ hàng</a></li>
+                        <li><a><i class="fa fa-shopping-cart" aria-hidden="true"></i>Giỏ hàng</a></li>
                         <li>
                             <log-in></log-in>
                         </li>
@@ -22,7 +22,7 @@
                         <li class="dropdown dropdown-small" *ngFor="let items of listSetting">
                             <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">{{items.name}} :</span><span class="value">{{items.default}} </span><b class="caret"></b></a>
                             <ul class="dropdown-menu" *ngIf="items.child">
-                                <li><a href="#" *ngFor="let item of items.child">{{item}}</a></li>
+                                <li><a *ngFor="let item of items.child">{{item}}</a></li>
                             </ul>
                         </li>
                     </ul>

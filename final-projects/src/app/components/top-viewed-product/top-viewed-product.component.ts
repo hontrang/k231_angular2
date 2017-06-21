@@ -32,7 +32,6 @@ export class TopViewedComponent implements OnInit {
                 }).slice(data.length-8,data.length).reverse();
             });
         });
-        this._userService.setLoggedUser(undefined);
 
     }
     ngOnInit() {

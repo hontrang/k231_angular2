@@ -22,7 +22,6 @@ export class SingleShopProductComponent implements OnInit {
                 }).reverse();
             });
         });
-        this._userService.setLoggedUser(undefined);
 
     }
     viewMore(){

@@ -36,7 +36,6 @@ export class MaincontentComponent implements OnInit {
         // productService.get_list_product_with_price("LG").then(data => {
         //     this.listProducts = data;
         // });
-        this._userService.setLoggedUser(undefined);
 
     }
     ngOnInit() {

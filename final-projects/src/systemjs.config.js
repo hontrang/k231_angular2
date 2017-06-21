@@ -37,7 +37,7 @@
           }
         }
       },
-      'rxjs': { main: 'Rx.js', defaultExtension: 'js' },
+      rxjs: { main: 'Rx.js', defaultExtension: 'js' },
     }
   });
 })(this);

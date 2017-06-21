@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject, ReplaySubject } from 'rxjs';
 import { Product } from "../models/product";
 
+declare var $: any;
 @Injectable()
 export class CartService {
     private eventSubject: Subject<any> = new ReplaySubject(1);
@@ -44,6 +45,7 @@ export class CartService {
     countCartList() {
         return this.cartList.length;
     }
+ 
     get $getEventSubject(): Observable<any> {
         return this.eventSubject.asObservable();
     }

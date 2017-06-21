@@ -38,6 +38,7 @@ var LoginPageComponent = (function () {
         this.process_login_success = false;
         this.isForgotPw = false;
         this.user = new user_component_1.NguoiDung("team02", "team02@gmail.com", "123456", "01/01/2000", "123456789", "12345 abc");
+        this.listUser = [];
         var chuoi_nguoi_dung = localStorage.getItem("nguoi_dung");
         if (chuoi_nguoi_dung != "" && chuoi_nguoi_dung != null) {
             this._userService.setLoggedUser(JSON.parse(chuoi_nguoi_dung));
@@ -91,7 +92,8 @@ var LoginPageComponent = (function () {
 LoginPageComponent = __decorate([
     core_1.Component({
         selector: 'log-in',
-        templateUrl: './login-page.component.html'
+        templateUrl: './login-page.component.html',
+        styleUrls: ['./login-page.css']
     }),
     __metadata("design:paramtypes", [user_service_1.UserService])
 ], LoginPageComponent);

@@ -41,6 +41,9 @@ import { SignUpComponent } from "./module/sign-up-page/sign-up.component";
 import { LoginPageComponent } from "./module/login-page/login-page.component";
 import { SingleShopProductContentComponent } from "./module/single-shop-product-page/single-shop-product-content.component";
 import { SingleProductContentComponent } from "./module/single-product-page/single-product-content.component";
+import {ContactPageComponent} from "./components/contact-page/contact-page.component";
+
+import {ContactPageContentComponent} from "./module/contact-page/contact-page-content.component";
 //Service
 import {UserService} from "./services/user.service";
 import { ProductService } from "./services/product.service";
@@ -54,7 +57,7 @@ import {CartService} from "./services/cart.service"
     BrandsComponent, MaincontentComponent, ProductWidgetComponent, PromoComponent, SliderComponent,
     ProductBigTitleComponent, SingleShopProductComponent,
     HomeContentComponent, SingleShopProductContentComponent, ChatComponent, SignUpComponent, SingleProductLeftComponent,SingleProductRightComponent,
-    SingleProductContentComponent, 
+    SingleProductContentComponent, ContactPageContentComponent,ContactPageComponent,
     LoginPageComponent,SearchEngineComponent,BackToTopComponent,TopViewedComponent],
   bootstrap: [AppComponent],
   providers: [ProductService, SingleProductLeftService,UserService, CartService]

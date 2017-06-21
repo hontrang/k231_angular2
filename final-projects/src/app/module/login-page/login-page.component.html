@@ -16,21 +16,35 @@
     <a *ngIf="!UserLogIn;else logged" href="#login-modal" data-toggle="modal">
                                 <i class="glyphicon glyphicon-log-in"></i>&nbsp;&nbsp;Đăng nhập</a>
 
-    <div class="modal  fade in" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false"
-        style="display: none;">
-        <div class="modal-dialog">
-            <div class="loginmodal-container">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <ng-template #login_status>
-                    <span>Đăng nhập thành công</span>
-                </ng-template>
-                <div class="login-detail" *ngIf="!process_login_success;else login_status">
-                    <h1>Đăng nhập</h1><br>
-                    <form>
-                        <input id="emailUser" type="text" #email name="email" placeholder="Email">
-                        <input id="matkhauUser" type="password" #matkhau name="pass" placeholder="Password">
-                        <input type="submit" name="login" class="login loginmodal-submit" value="Đăng nhập" (click)="btn_log_in(email, matkhau)">
-                    </form>
+<div class="modal  fade in" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false"
+    style="display: none;">
+    <div class="modal-dialog">
+        <div class="loginmodal-container">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <ng-template #login_status>
+                <span>Đăng nhập thành công</span>
+            </ng-template>
+            <div class="login-detail" *ngIf="!process_login_success;else login_status">
+                <h1>Đăng nhập</h1><br>
+                <form id="form_dang_nhap" #form_dang_nhap="ngForm">
+                    <div class="form-group">
+                    <input required email #email="ngModel" [(ngModel)]="listUser.Email" type="text" class="form-control" name="email"
+                                    placeholder="Nhập email">
+                              <div *ngIf="!email.valid && email.dirty" class="panel panel-warning">
+                                    
+                               
+                                    <div *ngIf="email.errors.email && listUser.Email != ''"  class="panel-body">
+                                        Email nhập sai định dạng rồi bạn à !!!
+                                        Nó có dạng xxx@gmail.com
+                                    </div>
+                                    <div *ngIf="email.errors.required" class="panel-body">
+                                            Bạn chưa nhập email kìa !!!
+                                    </div>
+                              </div>
+                    </div>
+                    <input id="matkhauUser" type="password" #matkhau name="pass" placeholder="Password">
+                    <input id="btn-login" type="submit" name="login" class="login loginmodal-submit" value="Đăng nhập" (click)="btn_log_in(email, matkhau)">
+                </form>
 
                     <div class="login-help">
                         <a>Quên tài khoản!</a>

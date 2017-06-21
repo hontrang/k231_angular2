@@ -41,6 +41,8 @@ export class LoginPageComponent implements OnInit {
         let chuoi_nguoi_dung = localStorage.getItem("nguoi_dung");
         if (chuoi_nguoi_dung != "" && chuoi_nguoi_dung != null) {
             this._userService.setLoggedUser(JSON.parse(chuoi_nguoi_dung));
+        }else{
+            this._userService.setLoggedUser(undefined);
         }
         this._userService.$getEventSubject.subscribe($event => {
             setTimeout(() => {

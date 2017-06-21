@@ -24,8 +24,7 @@
             </div>
         </div>
     </div>
-    <div class="single-product-area-view-more">
-        
-        <button type="button" class="btn btn-primary" (click)="viewMore()">Xem Thêm</button>
-    </div>
+</div>
+<div class="single-product-area-view-more" *ngIf="max_view <= listProducts.length ">
+    <button type="button" class="btn btn-primary" (click)="viewMore()">Xem Thêm</button>
 </div>

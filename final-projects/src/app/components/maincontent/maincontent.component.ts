@@ -30,7 +30,6 @@ export class MaincontentComponent implements OnInit {
                 this.listProducts =  data.sort((a,b) => {
                     return  Date.parse(a.ngay_tao) - Date.parse(b.ngay_tao);
                 }).slice(data.length-8,data.length).reverse();
-                console.log(this.listProducts);
             });
         });
         // productService.get_list_product_with_price("LG").then(data => {

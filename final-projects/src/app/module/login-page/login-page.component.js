@@ -43,6 +43,9 @@ var LoginPageComponent = (function () {
         if (chuoi_nguoi_dung != "" && chuoi_nguoi_dung != null) {
             this._userService.setLoggedUser(JSON.parse(chuoi_nguoi_dung));
         }
+        else {
+            this._userService.setLoggedUser(undefined);
+        }
         this._userService.$getEventSubject.subscribe(function ($event) {
             setTimeout(function () {
                 _this.UserLogIn = _this._userService.getLoggedUser();

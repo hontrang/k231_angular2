@@ -1,0 +1,39 @@
+/*Định dạng cho nội dung form*/
+#main
+{
+    margin-left:240px;
+    margin-top: 50px;
+    margin-bottom: 200px;
+
+}
+/*Định dạng cho chữ tiêu đề form*/
+legend
+{
+    color:blue ;
+    font-weight: bold;
+}
+#main .label-info
+{
+  
+    float:left;
+    width: 100px; /*Chiều rộng  của các trường text trong form*/
+    line-height:30px;	/*Độ dài từng dòng của các trường text trong form*/
+    font-weight: bold;
+    background: none;
+}
+
+
+/*Định dạng cho khung nhập */
+#main input
+{
+
+margin:5px 0px 5px 0px;
+line-height:10px;	
+
+margin-bottom:5px;
+margin-top:5px;
+}
+#imglienhe{
+    width:400px;
+    height:300px;
+}

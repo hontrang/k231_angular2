@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
+import {Product} from "../../models/product";
 import { ActivatedRoute, Params }   from '@angular/router';
-import {ProductService} from '../../services/product.service'
+import {ProductService} from '../../services/product.service';
+import { CartService } from "../../services/cart.service";
 import 'rxjs/add/operator/switchMap';
 
 declare var jQuery: any;
@@ -24,21 +26,38 @@ export class SingleProductRightComponent implements OnInit {
        listGioHang:any[]=[];
     isReviewed:boolean=false;
     productDetail:any;
-
+    
+    mang_gio_hang: any[] = [];
+    tong_so_luong: number = 0;
+    tong_tien: number = 0;
 
    
-    constructor(private route:ActivatedRoute,private productservice:ProductService) {
-        
-     }
+    // constructor(private route:ActivatedRoute,private productservice:ProductService) {
+       
+    //  }
+      constructor(private _cartService: CartService,private route:ActivatedRoute,private productservice:ProductService) {
+        let chuoi_ds_gio_hang = localStorage.getItem("gio_hang");
 
+        if (chuoi_ds_gio_hang != "" && chuoi_ds_gio_hang != null) {
+            this.mang_gio_hang = JSON.parse(chuoi_ds_gio_hang);
+        }
+        this._cartService.$getEventSubject.subscribe($event => {
+            setTimeout(() => {
+                this.tong_so_luong = this._cartService.countCartList();
+                let new_item_price = this._cartService.getNewItem();
+                this.tong_tien += parseFloat(new_item_price.new_price);
+            }, 100)
+        });
+        //console.log(chuoi_ds_gio_hang);    
+    }
     ngOnInit() {
 
-        // this.route.params
-        // .switchMap((params: Params) => this.productservice.get_list_productById(+params['id_san_pham']))
-        // .subscribe(product=>{
-        //     this.productDetail=product[0];
-        //     console.log(this.productDetail);
-        // });
+        this.route.params
+        .switchMap((params: Params) => this.productservice.get_product_by_id(+params['id_san_pham']))
+        .subscribe(product=>{
+            this.productDetail=product[0];
+           // console.log(this.productDetail);
+        });
 
         console.log(this.route.params);
 
@@ -49,40 +68,8 @@ export class SingleProductRightComponent implements OnInit {
         alert('bạn đã đánh giá xong');
         this.isReviewed=true;
     }
-    // AddToCart(id_sp:any)
-    // {
-    //     this.listSingleProductRight.forEach((san_pham)=>{
-    //         if(san_pham.id==id_sp){
-                
-    //                 if(this.listGioHang.length>0){
-    //                     let check=0;
-    //                     this.listGioHang.forEach(san_pham_gio_hang=>{
-    //                         if(san_pham_gio_hang.id===id_sp){
-    //                             san_pham_gio_hang.soluong+=1;
-    //                             check=1;
-    //                         }
-
-    //                     });
-    //                         if(check==0){
-    //                             san_pham.soluong=1;
-    //                             this.listGioHang.push(san_pham);
-    //                         }
-    //                 }
-    //                 else{
-    //                     san_pham.soluong=1;
-    //                     this.listGioHang.push(san_pham);
-    //                 }
-                
-    //         }
-    //     });
-    //     let soluongsp = 0;
-    //     let tongtien = 0;
-    //     this.listGioHang.forEach((sp_gio_hang) => {
-    //         soluongsp += sp_gio_hang.soluong * 1;
-    //         tongtien +=sp_gio_hang.soluong * sp_gio_hang.new_price;
-    //     });
-    //    //localStorage.setItem("gio_hang", JSON.stringify(this.listGioHang));
-    //     $(".product-count").html(soluongsp);
-    //     $(".cart-amunt").html('$'+tongtien);
+    addToCart(item:Product){
+        this._cartService.cartChange('add',item);
+    }
     
 }

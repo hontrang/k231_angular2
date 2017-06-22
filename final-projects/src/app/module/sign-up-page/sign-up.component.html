@@ -1,8 +1,8 @@
 <a *ngIf="!UserLogIn" href="#signup-modal" data-toggle="modal">
-                                <i class="fa fa-user-plus"></i>&nbsp;Đăng ký</a>
+                                <i class="fa fa-user-plus" aria-hidden="true"></i>Đăng ký</a>
 <ng-template #register_successful>
             <div>
-                  <span>Tạo tài khoản thành công, vui lòng đăng nhập!</span>
+                  <span>Đăng ký tài khoản thành công, vui lòng đợi trong giây lát!</span>
             </div>
       </ng-template>
 <div class="modal fade in" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false"
@@ -35,23 +35,25 @@
                                     <!--<div class="panel-heading">
                     <h3 class="panel-title">Panel title</h3>
               </div>-->
-              <div *ngIf="email.errors.pattern"  class="panel-body">
-                  Email nhập sai định dạng
-              </div>
-              <div *ngIf="email.errors.required" class="panel-body">
-                    Vui lòng nhập email
-              </div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="">Mật khẩu</label>
-        <input required #mat_khau="ngModel" [(ngModel)]="nguoi_dung.MatKhau" type="password" class="form-control" name="mat_khau" placeholder="Nhập mật khẩu">
-          <div *ngIf="!mat_khau.valid && mat_khau.dirty" class="panel panel-warning">
-              <!--<div class="panel-heading">
+                                    <div *ngIf="email.errors.pattern" class="panel-body">
+                                          Email nhập sai định dạng
+                                    </div>
+                                    <div *ngIf="email.errors.required" class="panel-body">
+                                          Vui lòng nhập email
+                                    </div>
+                              </div>
+                        </div>
+                        <div class="form-group">
+                              <label for="">Mật khẩu</label>
+                              <input pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required 
+                              #mat_khau="ngModel" [(ngModel)]="nguoi_dung.MatKhau" type="password" class="form-control" name="mat_khau"
+                                    placeholder="Nhập mật khẩu">
+                              <div *ngIf="!mat_khau.valid && mat_khau.dirty" class="panel panel-warning">
+                                    <!--<div class="panel-heading">
                     <h3 class="panel-title">Panel title</h3>
               </div>-->
                                     <div class="panel-body">
-                                          Mật khẩu có ít nhất 8 ký tự và phải bao gồm chữ hoa, chữ thường, ký tự đặt biệt
+                                          Vui lòng nhập mật khẩu
                                     </div>
                               </div>
                         </div>
@@ -84,7 +86,7 @@
                         </div>
                         <div class="form-group">
                               <label for="">Địa chỉ</label>
-                              <input #dia_chi="ngModel" [(ngModel)]="nguoi_dung.DiaChi" type="text" class="form-control" name="dia_chi" placeholder="Nhập địa chỉ">
+                              <input required #dia_chi="ngModel" [(ngModel)]="nguoi_dung.DiaChi" type="text" class="form-control" name="dia_chi" placeholder="Nhập địa chỉ">
                               <div *ngIf="!dia_chi.valid && dia_chi.dirty" class="panel panel-warning">
                                     <!--<div class="panel-heading">
                     <h3 class="panel-title">Panel title</h3>

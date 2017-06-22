@@ -17,7 +17,6 @@ export class CartService{
         this._userService.$getEventSubject.subscribe(data => {
             let loggedUser = this._userService.getLoggedUser();
             this.listCart.UserID = (loggedUser != undefined) ? loggedUser.Email : "";
-            console.log(this.listCart);
         })
         if (localStorage.getItem('gio_hang') != undefined) {
             this.listCart = JSON.parse(localStorage.getItem('gio_hang'));

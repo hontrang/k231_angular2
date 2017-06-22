@@ -1,0 +1,69 @@
+ <div class="single-product-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">                            
+                <div class="col-md-12">
+                    <div class="product-content-right">
+                        <div class="woocommerce">
+                            <form method="post" action="#">
+                                <table cellspacing="0" class="shop_table cart">
+                                    <thead>
+                                        <tr>
+                                            <th class="product-remove">&nbsp;</th>
+                                            <th class="product-thumbnail">&nbsp;</th>
+                                            <th class="product-name">Sản Phẩm</th>
+                                            <th class="product-price">Giá</th>
+                                            <th class="product-quantity">Số Lượng</th>
+                                            <th class="product-subtotal">Tổng Cộng</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="cart_item" *ngFor="let item of listCart.Items; let in = index">
+                                            <td class="product-remove">
+                                                <a title="Remove this item" class="remove" (click)="removeItemOnCart(item)">×</a> 
+                                            </td>
+
+                                            <td class="product-thumbnail">
+                                                <a href="single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="images/san_pham/{{item.Pt.hinh_san_pham}}"></a>
+                                            </td>
+
+                                            <td class="product-name">
+                                                <a href="single-product.html">{{item.Pt.ten_san_pham}}</a> 
+                                            </td>
+
+                                            <td class="product-price">
+                                                <span class="amount">{{item.Pt.don_gia | currency:'VND':true}}</span> 
+                                            </td>
+
+                                            <td class="product-quantity">
+                                                <div class="quantity buttons_added">
+                                                    <input type="button" class="minus" value="-" (click)="onChangeQuatity(item, false)">
+
+                                                    <input type="number" class="input-text qty text" title="Qty" 
+                                                        min="0" step="1" [(ngModel)]="item.Quantity"  name="quantity{{in}}" >
+
+                                                    <input type="button" class="plus" value="+" (click)="onChangeQuatity(item, true)">
+                                                </div>
+                                            </td>
+
+                                            <td class="product-subtotal">
+                                                <span class="amount">{{item.Pt.don_gia * item.Quantity| currency:'VND':true}}</span> 
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="actions" colspan="4">
+                                                <span class="cart-amunt">Tổng tiền đơn hàng</span>
+                                            </td>
+                                            <td class="actions" colspan="2">
+                                                <span class="cart-amunt">{{listCart.ProductPrice | currency:'VND':true}}</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>                            
+                        </div>                        
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>

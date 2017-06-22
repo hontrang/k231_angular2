@@ -35,8 +35,9 @@ var LoginPageComponent = (function () {
                 ]
             }
         ];
-        this.process_login_success = false;
+        this.login_success = false;
         this.isForgotPw = false;
+        this.process_login_success = false;
         this.user = new user_component_1.NguoiDung("team02", "team02@gmail.com", "123456", "01/01/2000", "123456789", "12345 abc");
         this.listUser = [];
         var chuoi_nguoi_dung = localStorage.getItem("nguoi_dung");
@@ -62,7 +63,6 @@ var LoginPageComponent = (function () {
         var _this = this;
         if (email.value == this.user.Email) {
             if (matkhau.value == this.user.MatKhau) {
-                // this.setUserLogin(this.user);
                 localStorage.setItem("nguoi_dung", JSON.stringify(this.user));
                 this.setProcessLoginStatus(true);
                 setTimeout(function () {
@@ -85,6 +85,7 @@ var LoginPageComponent = (function () {
         localStorage.removeItem("nguoi_dung");
         this._userService.setLoggedUser(undefined);
         this.setProcessLoginStatus(false);
+        // this.reload();
     };
     LoginPageComponent.prototype.forgotPasswd = function () {
         this.isForgotPw = true;

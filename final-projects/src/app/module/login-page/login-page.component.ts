@@ -33,8 +33,9 @@ export class LoginPageComponent implements OnInit {
         }
     ];
     UserLogIn: any;
-    process_login_success = false;
+    login_success = false;
     isForgotPw = false;
+    process_login_success = false;
     user = new NguoiDung("team02","team02@gmail.com", "123456", "01/01/2000", "123456789", "12345 abc");
     listUser: NguoiDung[] = [];
     constructor(private _userService: UserService) {
@@ -59,7 +60,6 @@ export class LoginPageComponent implements OnInit {
     btn_log_in(email: any, matkhau: any) {
         if (email.value == this.user.Email) {
             if (matkhau.value == this.user.MatKhau) {
-                // this.setUserLogin(this.user);
                 localStorage.setItem("nguoi_dung", JSON.stringify(this.user));
                 this.setProcessLoginStatus(true);
                 setTimeout(() => {
@@ -82,6 +82,7 @@ export class LoginPageComponent implements OnInit {
         localStorage.removeItem("nguoi_dung");
         this._userService.setLoggedUser(undefined);
         this.setProcessLoginStatus(false);
+        // this.reload();
     }
     forgotPasswd() {
         this.isForgotPw = true;

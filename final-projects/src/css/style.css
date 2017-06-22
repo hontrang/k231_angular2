@@ -96,9 +96,7 @@ text-transform: uppercase;
 width: 100%;
 z-index: 999;}
 
-.site-branding-area{
-    position: relative;
-}
+
 
 .logo h1 {
     font-size: 40px;
@@ -311,7 +309,6 @@ padding-right: 20px;
 	color: #1bd172;
 }
 .block-slider .caption-group .caption{
-
 }
 .brands-area ul{
     background: #000;
@@ -812,8 +809,8 @@ input[type="text"], input[type="password"], input[type="email"], textarea {
     color: #fff;
     padding: 11px 20px;
     text-transform: uppercase;
-}*/
-/*input[type="submit"]:hover, button[type=submit]:hover {background-color: #222}
+}
+input[type="submit"]:hover, button[type=submit]:hover {background-color: #222}
 .single-sidebar input[type="text"] {
     margin-bottom: 10px;
     width: 100%;
@@ -1246,6 +1243,7 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
     width: 300px;
     color:white;
     padding :10px;
+    cursor: pointer;
 }
 .kqchat{
     background: white;
@@ -1421,3 +1419,12 @@ a.active-routing{
 }
 
 
+
+.custom-alert{
+    position: fixed;
+    width: 40%;
+    bottom: 0px;
+    z-index: 9999;
+    left: 30%;
+    text-align: center;
+}

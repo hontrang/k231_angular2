@@ -12,8 +12,17 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="shopping-item">
-                        <a href="cart.html">Giỏ hàng - <span class="cart-amunt">{{tong_tien | currency:'VND':true}}</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">{{tong_so_luong}}</span></a>
+                        <a [routerLink]="['/shopping-cart']">Giỏ hàng - <span class="cart-amunt">{{tong_tien | currency:'VND':true}}</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">{{tong_so_luong}}</span></a>
                     </div>
+            <div class="col-sm-6">
+                <!--<div class="logo">
+                    <h1><a [routerLink]="['']"><img src="img/logo.png"></a></h1>
+                </div>
+            </div>
+            
+            <div class="col-sm-6">
+                <div class="shopping-item">
+                     <a [routerLink]="['/shopping-cart']">Cart - <span class="cart-amunt">${{shoppingCartService.totalPrice}}</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">{{shoppingCartService.totalQuantity}}</span></a>-->
                 </div>
             </div>
         </div>

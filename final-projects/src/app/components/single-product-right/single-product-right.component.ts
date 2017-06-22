@@ -44,8 +44,7 @@ export class SingleProductRightComponent implements OnInit {
         this._cartService.$getEventSubject.subscribe($event => {
             setTimeout(() => {
                 this.tong_so_luong = this._cartService.countCartList();
-                let new_item_price = this._cartService.getNewItem();
-                this.tong_tien += Number(new_item_price.don_gia);
+                this.tong_tien = this._cartService.totalProductPrice();
             }, 100)
         });
         //console.log(chuoi_ds_gio_hang);    

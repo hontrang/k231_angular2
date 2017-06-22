@@ -3,6 +3,7 @@ import { Product } from "../../models/product";
 import { ProductService } from "../../services/product.service";
 import { UserService } from "../../services/user.service";
 import { CartService } from "../../services/cart.service";
+import { ShoppingCart } from "../../models/shoppingCart.component";
 declare var $: any;
 
 @Component({
@@ -14,6 +15,7 @@ export class MaincontentComponent implements OnInit {
     listGioHang: any[] = [];
     listProducts: any[] = [];
     listFromAPI: Product[] = [];
+    isShowAlert: boolean = false;
     constructor(private _productService: ProductService, private _userService: UserService, private _cartService: CartService) {
         this._userService.$getEventSubject.subscribe(event => {
             //wait for user log changed
@@ -27,9 +29,9 @@ export class MaincontentComponent implements OnInit {
             //     });
             // }, 50);
             this._productService.getListProductFromPublicAPI().subscribe(data => {
-                this.listProducts =  data.sort((a,b) => {
-                    return  Date.parse(a.ngay_tao) - Date.parse(b.ngay_tao);
-                }).slice(data.length-8,data.length).reverse();
+                this.listProducts = data.sort((a, b) => {
+                    return Date.parse(a.ngay_tao) - Date.parse(b.ngay_tao);
+                }).slice(data.length - 8, data.length).reverse();
             });
         });
         // productService.get_list_product_with_price("LG").then(data => {
@@ -37,9 +39,10 @@ export class MaincontentComponent implements OnInit {
         // });
 
     }
-    ngOnInit() {
-        this._userService.$getEventSubject.subscribe(event => {
 
+    ngOnInit() {
+        setTimeout(() => {
+            this.loadJQuery();
         });
         let chuoi_ds_gio_hang = localStorage.getItem("gio_hang");
 
@@ -49,78 +52,10 @@ export class MaincontentComponent implements OnInit {
     }
     AddToCart(item: Product) {
         this._cartService.cartChange('add', item);
-
-        // this.listProducts.forEach((san_pham) => {
-        //     if (san_pham.id == id_sp) {
-
-        //         if (this.listGioHang.length > 0) {
-        //             let check = 0;
-        //             this.listGioHang.forEach(san_pham_gio_hang => {
-        //                 if (san_pham_gio_hang.id === id_sp) {
-        //                     san_pham_gio_hang.soluong += 1;
-        //                     check = 1;
-        //                 }
-
-        //             });
-        //             if (check == 0) {
-        //                 san_pham.soluong = 1;
-        //                 this.listGioHang.push(san_pham);
-        //             }
-        //         }
-        //         else {
-        //             san_pham.soluong = 1;
-        //             this.listGioHang.push(san_pham);
-        //         }
-
-        //     }
-        // });
-        // let soluongsp = 0;
-        // let tongtien = 0;
-        // this.listGioHang.forEach((sp_gio_hang) => {
-        //     soluongsp += sp_gio_hang.soluong * 1;
-        //     tongtien += sp_gio_hang.soluong * sp_gio_hang.new_price;
-        // });
-        // localStorage.setItem("gio_hang", JSON.stringify(this.listGioHang));
-        // $(".product-count").html(soluongsp);
-        // $(".cart-amunt").html('$' + tongtien);
-        //    AddToCart(sp:any){
-
-        //     if(this.listProducts.length>0)
-        //     {
-        //         let kiemtra:boolean = true;
-        //          this.listProducts.forEach((item)=>{
-
-        //              if(item.id == sp.id)
-        //              {
-        //                    item.so_luong += 1; 
-        //                    kiemtra = false;              
-        //              }
-        //          });
-
-        //          if(kiemtra){
-        //                   sp.so_luong = 1;
-        //                     this.listProducts.push(sp);
-        //              }
-        //     }
-        //     else {
-        //         sp.so_luong = 1;                            
-        //         this.listProducts.push(sp);
-        //         //console.log(this.list_product) ;   
-        //     }
-        //     let soLuongTong=0;
-        //     let thanhTien=0;
-        //     this.listProducts.forEach((item)=>{
-        //     soLuongTong += item.so_luong*1;
-        //     thanhTien += item.don_gia * item.so_luong;
-        //     });
-
-        //     $(".product-count").html(soLuongTong);
-        //     $(".cart-amunt").html(thanhTien);
-        //  console.log( this.list_product);
-
-    }
-    showDetail() {
-
+        this.isShowAlert = true;
+        setTimeout(() => {
+            this.isShowAlert = false;
+        }, 3000)
     }
     loadJQuery() {
         // jQuery sticky Menu
@@ -208,5 +143,15 @@ export class MaincontentComponent implements OnInit {
             offset: 95
         })
     }
+
+    // AddToCart(item:any){
+    //     let it = new ShoppingCart("SC" + Math.round(Math.random()*100000), "guest123", item.id, item.desc, item.image, item.new_price*1, 1);
+    //     console.log(it);
+    //     let result:number =  this.shoppingCartService.addToShoopingCart(item);
+    //     this.isShowAlert = true;
+    //     setTimeout(()=>{
+    //         this.isShowAlert = false;
+    //     },3000)
+    // }
 
 }

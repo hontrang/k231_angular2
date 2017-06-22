@@ -26,18 +26,6 @@ var UserService = (function () {
     UserService.prototype.checkUserLogged = function () {
         return this.isLogged;
     };
-    // getAPIByHttp(): Promise<NguoiDung[]> {
-    //     return this._http.get("http://172.25.55.10:8000/")
-    //         .toPromise()
-    //         .then(data => data.json() as NguoiDung[])
-    //         .catch(this.handleError);
-    // }
-    // createNewUser(user: any): Promise <NguoiDung>{
-    //     return this._http.post("http://172.25.55.10:8000/", JSON.stringify({ name: name }), { headers: this.headers })
-    //         .toPromise()
-    //         .then(res => res.json() as NguoiDung)
-    //         .catch(this.handleError);
-    // }
     UserService.prototype.handleError = function (error) {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);

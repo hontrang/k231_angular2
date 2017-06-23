@@ -1,0 +1,48 @@
+<div class="single-product-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6" *ngFor="let item of listProducts">
+                    <div class="single-shop-product">
+                        <div class="product-upper img-overflow">
+                            <img src="/images/san_pham/{{item.hinh_san_pham}}" alt="" class= "img-style">
+                            <!--<img src="img/product-1.jpg" alt="">-->
+                        </div>
+                        <h2 class="text-overfow"><a [routerLink]="['single-product-right', item.ma]">{{item.ten_san_pham}}</a></h2>
+                        <div class="product-carousel-price">
+                            <ins>{{item.don_gia | currency:'VND':true}}</ins>
+                        </div>  
+                        
+                        <div class="product-option-shop">
+                            <a class="add-to-cart-link" (click)="AddToCart(item)"><i class="fa fa-shopping-cart"></i>Thêm</a>
+                        </div>                       
+                    </div>
+                </div>
+              
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="product-pagination text-center">
+                        <nav>
+                          <ul class="pagination">
+                            <li>
+                              <a href="#" aria-label="Previous">
+                                <span aria-hidden="true">«</span>
+                              </a>
+                            </li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li>
+                              <a href="#" aria-label="Next">
+                                <span aria-hidden="true">»</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </nav>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

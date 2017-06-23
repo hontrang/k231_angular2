@@ -25,8 +25,8 @@ import { ChatComponent} from "./templates/chat/chat.component";
 import { BrandsComponent } from "./components/brands/brands.component";
 import { MaincontentComponent } from "./components/maincontent/maincontent.component";
 import { ProductWidgetComponent } from "./components/product-widget/product-widget.component";
-import { PromoComponent } from "./components/promo/promo.component";
-import { SliderComponent } from "./components/slider/slider.component";
+// import { PromoComponent } from "./components/promo/promo.component";
+// import { SliderComponent } from "./components/slider/slider.component";
 import { ProductBigTitleComponent } from "./components/product-big-title/product-big-title.component";
 import { SingleShopProductComponent } from "./components/single-shop-product/single-shop-product.component";
 import {SingleProductLeftComponent} from "./components/single-product-left/single-product-left.component";
@@ -55,7 +55,7 @@ import {CartService} from "./services/cart.service";
 @NgModule({
   imports: [BrowserModule, FormsModule, routedComponents,HttpModule],
   declarations: [AppComponent, HeaderComponent, MainmenuComponent, SiteBrandingComponent, FooterTopComponent, FooterBottomComponent,
-    BrandsComponent, MaincontentComponent, ProductWidgetComponent, PromoComponent, SliderComponent,
+    BrandsComponent, MaincontentComponent, ProductWidgetComponent,
     ProductBigTitleComponent, SingleShopProductComponent,
     HomeContentComponent, SingleShopProductContentComponent, ChatComponent, SignUpComponent, SingleProductLeftComponent,SingleProductRightComponent,
     SingleProductContentComponent, ContactPageContentComponent,ContactPageComponent,

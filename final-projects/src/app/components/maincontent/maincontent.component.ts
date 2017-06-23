@@ -18,16 +18,6 @@ export class MaincontentComponent implements OnInit {
     isShowAlert: boolean = false;
     constructor(private _productService: ProductService, private _userService: UserService, private _cartService: CartService) {
         this._userService.$getEventSubject.subscribe(event => {
-            //wait for user log changed
-            // setTimeout(() => {
-            //     this._productService.getListProductFromPublicAPI().then(data => {
-            //         this.listProducts = data.slice(0,8);
-            //         console.log(this.listProducts);
-            //         setTimeout(()=>{
-            //             this.loadJQuery();
-            //         },50);
-            //     });
-            // }, 50);
             this._productService.getListProductFromPublicAPI().subscribe(data => {
                 this.listProducts = data.sort((a, b) => {
                     return Date.parse(a.ngay_tao) - Date.parse(b.ngay_tao);
@@ -143,15 +133,5 @@ export class MaincontentComponent implements OnInit {
             offset: 95
         })
     }
-
-    // AddToCart(item:any){
-    //     let it = new ShoppingCart("SC" + Math.round(Math.random()*100000), "guest123", item.id, item.desc, item.image, item.new_price*1, 1);
-    //     console.log(it);
-    //     let result:number =  this.shoppingCartService.addToShoopingCart(item);
-    //     this.isShowAlert = true;
-    //     setTimeout(()=>{
-    //         this.isShowAlert = false;
-    //     },3000)
-    // }
 
 }

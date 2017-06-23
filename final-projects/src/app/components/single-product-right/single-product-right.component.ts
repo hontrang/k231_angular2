@@ -54,7 +54,7 @@ export class SingleProductRightComponent implements OnInit {
         this.route.params
         .switchMap((params: Params) => this.productservice.getListProductFromPublicAPIById(+params['id_san_pham']))
         .subscribe(product=>{
-            this.productDetail=product[0];
+            this.productDetail=product[1];
         });
 
 

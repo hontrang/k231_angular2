@@ -1482,3 +1482,7 @@ a.active-routing{
     left: 30%;
     text-align: center;
 }
+.preload{
+    margin: 100px auto;
+    text-align: center;
+}

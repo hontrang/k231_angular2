@@ -14,7 +14,8 @@ const routes: Routes = [
   { path: 'single-product-content', component:SingleProductContentComponent},
   { path: 'single-product-content/:id_san_pham',component:SingleProductContentComponent},
   { path: 'contact',component:ContactPageContentComponent},
-  { path: 'shopping-cart', component:ShoppingCartContentComponent}
+  { path: 'shopping-cart', component:ShoppingCartContentComponent},
+  {path: 'single-shop-product-content/san-pham-moi/single-product-content/:id_san_pham', redirectTo:'single-product-content/:id_san_pham', pathMatch:'full'}
 ];
 
 

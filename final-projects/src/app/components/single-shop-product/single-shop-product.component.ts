@@ -14,6 +14,7 @@ export class SingleShopProductComponent implements OnInit {
     listProducts: any[] = [];
     max_view = 8;
     increasement = 8;
+    isShowAlert= false;
     constructor(private _productService: ProductService, private _userService: UserService, private _cartService: CartService) {
         this._userService.$getEventSubject.subscribe(event => {
             this._productService.getListProductFromPublicAPI().subscribe(data => {
@@ -24,8 +25,15 @@ export class SingleShopProductComponent implements OnInit {
         });
 
     }
-    viewMore(){
-        this.max_view+=this.increasement;
+    AddToCart(item: Product) {
+        this._cartService.cartChange('add', item);
+        this.isShowAlert = true;
+        setTimeout(() => {
+            this.isShowAlert = false;
+        }, 3000)
+    }
+    viewMore() {
+        this.max_view += this.increasement;
     }
     ngOnInit() { }
 }

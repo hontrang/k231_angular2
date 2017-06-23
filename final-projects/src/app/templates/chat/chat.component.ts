@@ -8,13 +8,9 @@ declare var $:any;
 export class ChatComponent implements OnInit {
     // mess:String='';
     mangChat:any[]=[];
-    constructor() {
-     }
+    constructor() { }
 
-    ngOnInit() { 
-        var closeChat=$('.kqchat,.noidungchat');
-        closeChat.toggle();
-    }
+    ngOnInit() { }
     // xuatMess(event:any)
     // {
     //     if(event.keyCode==13){
